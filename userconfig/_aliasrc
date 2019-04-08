@@ -1,0 +1,14 @@
+#!/bin/sh
+alias v="$EDITOR" \
+    p="sudo pacman" \
+    l="ls -a" \
+    ls="ls -h --group-directories-first --color=auto" \
+    ll="ls -la" \
+    py="python3" \
+    cfv="$EDITOR ~/.vimrc" \
+    cfi="$EDITOR ~/.config/i3/config" \
+    cfa="$EDITOR $SALTRICED/userconfig/_aliasrc && source $HOME/.bashrc" \
+    cfb="$EDITOR ~/.bashrc && source $_" \
+    cfp="$EDITOR ~/.bash_profile && source $_" \
+    cft="cd /usr/src/st" \
+    cdf="cd $SALTRICED"

@@ -1,0 +1,140 @@
+
+# housekeeping
+for_window [class="^,*"] border pixel 2
+set $igap 10
+set $ogap 6
+
+set $mod Mod4
+set $term --no-startup-id $TERMINAL
+set $browser --no-startup-id $BROWSER
+set $netrefresh --no-startup-id sudo -A systemctl restart NetworkManager
+set $hibernate sudo -A systemctl suspend
+
+gaps inner $igap
+gaps outer $ogap
+
+font pango:monospace 14
+floating_modifier $mod
+focus_follows_mouse no
+# startup
+exec --no-startup-id xcompmgr
+exec --no-startup-id xwallpaper --zoom ~/.config/wall2.png
+exec --no-startup-id mpd
+exec --no-startup-id unclutter
+
+# application keybinds
+bindsym $mod+w          exec $browser
+bindsym $mod+r          exec $term -e $FILE
+bindsym $mod+a          exec $term -e pulsemixer
+bindsym $mod+Shift+a    exec pavucontrol
+
+bindsym $mod+l          exec i3lock -e -i ~/.config/wall.png
+
+# defaults
+bindsym $mod+Return exec $term
+
+bindsym $mod+q kill
+
+bindsym $mod+d exec dmenu_run
+
+# bindsym $mod+j focus left
+# bindsym $mod+k focus down
+# bindsym $mod+l focus up
+# bindsym $mod+semicolon focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+h split h
+bindsym $mod+v split v
+bindsym $mod+t split toggle
+
+bindsym $mod+g gaps inner current set $igap; gaps outer current set $ogap
+bindsym $mod+Shift+g gaps inner current set 6; gaps outer current set 0
+bindsym $mod+f fullscreen toggle
+
+
+bindsym $mod+Shift+space floating toggle
+
+bindsym $mod+space focus mode_toggle
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# workspace keybinds
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace back_and_forth
+
+bindsym $mod+F2 reload
+bindsym $mod+F1 restart
+bindsym $mod+Shift+e exec "bash ~/.scripts/i3_exit_prompt"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+mode "resize" {
+
+        bindsym l resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
+        bindsym h resize grow width 10 px or 10 ppt
+
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+Shift+r mode "resize"
+
+bar {
+	font pango:monospace 12
+    status_command i3blocks
+	position top
+	mode dock
+	modifier None
+}

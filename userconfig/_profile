@@ -1,0 +1,35 @@
+#!/bin/sh
+export EDITOR="nvim"
+export TERMINAL="st"
+export FILE="ranger"
+export BROWSER="google-chrome-stable"
+
+# PS1 is the environment variable for the format of the bash prompt text
+# Ex: [username@computername ~/path/to/current/directory]$
+export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+# default PS1: "[\u@\h \W]\$ "
+export SALTRICED="$HOME/.ez_arch/saltrice"
+
+export SALTRICED="$HOME/.ez_arch/saltrice"
+export CONFIGD="$HOME/.config"
+export XDG_CONFIG_HOME="$CONFIGD"
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$HOME/.scripts:$PATH"
+
+export RANGER_LOAD_DEFAULT_RC=FALSE
+
+# load aliases
+[ -f $SALTRICED/userconfig/_aliasrc ] && source $SALTRICED/userconfig/_aliasrc
+[ -f $SALTRICE/userconfig/_aliasrc ] && source $SALTRICE/userconfig/_aliasrc
+
+# load pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi
+
+# [[ $- == *i* ]] && source ~/.bashrc || echo "" > /dev/null
+
+# If not running an interactive shell and i3 isn't already running, start i3
+[[ $- == *i* ]] && true ||  [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx
+
