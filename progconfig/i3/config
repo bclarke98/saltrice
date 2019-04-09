@@ -21,6 +21,7 @@ exec --no-startup-id xcompmgr
 exec --no-startup-id xwallpaper --zoom ~/.config/wall2.png
 exec --no-startup-id mpd
 exec --no-startup-id unclutter
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # application keybinds
 bindsym $mod+w          exec $browser
@@ -133,10 +134,10 @@ mode "resize" {
 
 bindsym $mod+Shift+r mode "resize"
 
-bar {
-	font pango:monospace 12
-    status_command i3blocks
-	position top
-	mode dock
-	modifier None
-}
+# bar {
+# 	font pango:monospace 12
+#     status_command i3blocks
+# 	position top
+# 	mode dock
+# 	modifier None
+# }
