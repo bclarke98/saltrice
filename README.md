@@ -2,22 +2,21 @@
 
 These are the dotfiles that I'm currently using on my Arch Linux install, however they should be mostly distro-independent. They're deployed by my [EZ-Arch installer script](https://github.com/bclarke98/ez_arch)
 ## Configuration Overview
-```
-OS          :   Arch Linux
+```OS          :   Arch Linux
 WM          :   i3
 Shell       :   bash
 Editor      :   neovim
 Terminal    :   bclarke-st (https://github.com/bclarke98/bclarke-st)
 ```
 
-##TODO List
-+ add font customization
-+ make i3bar useful
-+ make emojis work
-
-##Devices
+## TODO List
+```add font customization
+make i3bar useful
+make emojis work
 ```
-ArchBtw-PC:
+
+## Devices
+```ArchBtw-PC:
     CPU     : AMD Ryzen 5 2600x
     GPU     : NVIDIA GTX 1080 Ti (blower edition)
     RAM     : 16GB DDR4 3000Mhz
