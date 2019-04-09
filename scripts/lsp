@@ -1,0 +1,20 @@
+#!/bin/sh
+# set up directories and make sure lsp.ignore is sorted if it exists
+[ ! -d $SCRIPTSD/tmpfiles ] && mkdir $SCRIPTSD/tmpfiles
+[ ! -f $SCRIPTSD/lsp.ignore ] && touch $SCRIPTSD/lsp.ignore || sort $SCRIPTSD/lsp.ignore -o $SCRIPTSD/lsp.ignore
+# ----- setup -----
+# save explicitly installed packages to packs.tmp
+echo "$(pacman -Qeq | sort)" > $SCRIPTSD/tmpfiles/packs.tmp
+# save base and base-devel package lists to bp.tmp
+echo "$(pacman -Qgq base base-devel | sort)" > $SCRIPTSD/tmpfiles/bp.tmp
+# save the unique packages from packs.tmp into apacks.tmp
+echo "$(comm -23 $SCRIPTSD/tmpfiles/packs.tmp $SCRIPTSD/tmpfiles/bp.tmp 2> /dev/null)" > $SCRIPTSD/tmpfiles/apacks.tmp
+
+# ----- output -----
+# only print packages that are not included in 'lsp.ignore'
+echo "$(comm -13 $SCRIPTSD/lsp.ignore $SCRIPTSD/tmpfiles/apacks.tmp)"
+
+# ----- cleanup -----
+[ -f $SCRIPTSD/tmpfiles/bp.tmp ] && rm $SCRIPTSD/tmpfiles/bp.tmp
+[ -f $SCRIPTSD/tmpfiles/packs.tmp ] && rm $SCRIPTSD/tmpfiles/packs.tmp
+[ -f $SCRIPTSD/tmpfiles/apacks.tmp ] && rm $SCRIPTSD/tmpfiles/apacks.tmp

@@ -32,6 +32,8 @@ bindsym $mod+l          exec i3lock -e -i ~/.config/wall.png
 
 # defaults
 bindsym $mod+Return exec $term
+bindsym $mod+Shift+Return exec samedir # TODO fix this, it doesnt work from i3...
+
 
 bindsym $mod+q kill
 
