@@ -2,5 +2,9 @@ dialog
 git
 google-chrome
 grub
+lib32-nvidia-utils
 networkmanager
+nvidia
+nvidia-settings
+nvidia-utils
 yay

@@ -49,7 +49,7 @@ autocmd BufWritePre * %s/\s\+$//e
 autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
 
 autocmd FileType sh map <F12> :!sh %<Enter>
-autocmd FileType python map <F12> :!py %<Enter>
+autocmd FileType python map <F12> :!python3 %<Enter>
 
 autocmd FileType c,cpp,h,hpp map <F5> :!ctags -R . && make clean && make<Enter>
 autocmd FileType c,cpp,h,hpp map <F12> :!ctags -R . && make clean && make run ARGS=""<left>
