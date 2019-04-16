@@ -3,6 +3,7 @@ git
 google-chrome
 grub
 lib32-nvidia-utils
+lib32-vulkan-icd-loader
 networkmanager
 nvidia
 nvidia-settings
