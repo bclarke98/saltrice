@@ -21,35 +21,97 @@ filetype plugin on
 set number relativenumber
 set wildmode=longest,list,full
 
+" tabs = "    "
 set tabstop=4
+" tabs = "    "
 set shiftwidth=4
 set expandtab
 set autoindent
+" these next two lines disable the "ding" noise in vim
 set visualbell
 set t_vb=
 
+" set :sp and :vsp to open the new file below/to the right of
+" the current file(s) you're editing
+set splitbelow splitright
+
 let mapleader=","
 
+" open where we left off
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
 endif
 
+
 " copy selected text to system clipboard with CTRL+c
 vnoremap <C-c> "+y
+map <C-p> "+P
 
 " set cursor to position of next instnace of <++>
 inoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 vnoremap <leader><leader> <Esc>/<++><Enter>"_c4l
 map <leader><leader> <Esc>/<++><Enter>"_c4l
 
+" Shortcuts for split navigation
+" SHORTCUT: <CTRL-h>    move to split left
+" SHORTCUT: <CTRL-j>    move to split below
+" SHORTCUT: <CTRL-k>    move to split above
+" SHORTCUT: <CTRL-l>    move to split right
+
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+" change autocomplete to CTRL-Space
+" SHORTCUT: <CTRL-Space>    autocomplete
+inoremap <C-Space> <C-n>
+
 " remove trailing whitespace
 autocmd BufWritePre * %s/\s\+$//e
 
+" refresh xrdb after editing Xresources or Xdefaults
 autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
 
+" make sure that .tex files are seen as tex filetype
+autocmd BufRead,BufNewFile *.tex set filetype=tex
+
+" clean up extra tex files when closing a tex file
+autocmd VimLeave *.tex !texclear %
+
+" refresh ctags when closing specified files
+autocmd VimLeave *.c,*.cpp,*.py,*.h !ctags -R .
+autocmd VimLeave *.c,*.cpp,*.h make clean >/dev/null 2>&1
+
+" SHORTCUT: <ALT-r>    Replace text under cursor
+map <M-r> :s/\<<C-r><C-w>\>//g<Left><Left>
+inoremap <M-r> :s/\<<C-r><C-w>\>//g<Left><Left>
+
+" SHORTCUT: <F12>   compiles/runs current file depending on filetype
 autocmd FileType sh map <F12> :!sh %<Enter>
 autocmd FileType python map <F12> :!python3 %<Enter>
+autocmd FileType tex map <F12> :!pdflatex %<Enter>
 
-autocmd FileType c,cpp,h,hpp map <F5> :!ctags -R . && make clean && make<Enter>
-autocmd FileType c,cpp,h,hpp map <F12> :!ctags -R . && make clean && make run ARGS=""<left>
+autocmd FileType c,cpp,h,hpp map <F5> !make clean && make<Enter>
+autocmd FileType c,cpp,h,hpp map <F12> !make clean && make run ARGS=""<left>
+
+" TEMPLATES
+" LaTeX
+autocmd BufNewFile *.tex 0r $SNIPPETD/tex.tmpl
+
+" INSERT MODE REMAPS
+" General
+inoremap ,. <++>
+
+" LaTeX
+autocmd FileType tex inoremap ,pp \paragraph{}<Enter><++><Esc>kf}i
+autocmd FileType tex inoremap ,se \section{}<Enter><++><Esc>kf}i
+autocmd FileType tex inoremap ,sse \subsection{}<Enter><++><Esc>kf}i
+autocmd FileType tex inoremap ,sss \subsubsection{}<Enter><++><Esc>kf}i
+autocmd FileType tex inoremap ,eq \begin{equation*}<Enter><++><Enter>\end{equation*}<Esc>2kf}i
+autocmd FileType tex inoremap ,neq \begin{equation}<Enter><++><Enter>\end{equation}<Esc>2kf}i
+autocmd FileType tex inoremap ,al \begin{align*}<Enter><++><Enter>\end{align*}<Esc>2kf}i
+autocmd FileType tex inoremap ,nal \begin{align}<Enter><++><Enter>\end{align}<Esc>2kf}i
+autocmd FileType tex inoremap ,ma \left[\begin{matrix}<Enter><++><Enter>\end{matrix}\right]<Esc>2kf}i
+

@@ -1,0 +1,21 @@
+#!/bin/sh
+
+tty=$(tty)
+
+cout() { printf "[Ez-Arch]: %s\\n" "$1"; }
+dashln() { head -c "$(($1-1))" < /dev/zero | tr '\0' '-'; echo; }
+ucout() { dashln $(cout "$1" | tee $tty | wc -m); }
+
+trim() { echo "$*" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//'; }
+
+pvimrc() {
+    vsc=$(cat ~/.vimrc | grep "SHORTCUT:" | awk -F':' '{ print $2 }';)
+    trim "$vsc" | awk '{printf "%-16s  ", $1; $1=""; print}' | sort; echo
+}
+
+main() {
+    ucout "VIM Shortcuts"
+    pvimrc
+}
+
+main

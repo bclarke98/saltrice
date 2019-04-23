@@ -6,11 +6,15 @@ export BROWSER="google-chrome-stable"
 
 # PS1 is the environment variable for the format of the bash prompt text
 # Ex: [username@computername ~/path/to/current/directory]$
-export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
 # default PS1: "[\u@\h \W]\$ "
+export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+
 export SALTRICED="$HOME/.ez_arch/saltrice"
 export SCRIPTSD="$SALTRICED/scripts"
 export CONFIGD="$HOME/.config"
+export SNIPPETD="$SALTRICED/snippets"
+export LATEXD="$HOME/Documents/LaTeX"
+
 export XDG_CONFIG_HOME="$CONFIGD"
 
 export PYENV_ROOT="$HOME/.pyenv"
