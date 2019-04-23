@@ -93,8 +93,8 @@ autocmd FileType sh map <F12> :!sh %<Enter>
 autocmd FileType python map <F12> :!python3 %<Enter>
 autocmd FileType tex map <F12> :!pdflatex %<Enter>
 
-autocmd FileType c,cpp,h,hpp map <F5> !make clean && make<Enter>
-autocmd FileType c,cpp,h,hpp map <F12> !make clean && make run ARGS=""<left>
+autocmd FileType c,cpp,h,hpp map <F5> :!make clean && make<Enter>
+autocmd FileType c,cpp,h,hpp map <F12> :!make clean && make run ARGS=""<left>
 
 " TEMPLATES
 " LaTeX
