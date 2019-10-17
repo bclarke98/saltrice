@@ -5,3 +5,4 @@ progconfig/pulse/
 progconfig/neofetch/
 progconfig/pavucontrol.ini
 scripts/tags
+*.pyc

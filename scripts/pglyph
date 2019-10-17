@@ -1,0 +1,6 @@
+#!/bin/sh
+for CODE in $@; do
+    /usr/bin/printf "\u$CODE\n"
+done
+
+exit $?

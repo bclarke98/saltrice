@@ -1,0 +1,2 @@
+09/23/2019 12:49:25 PM - ERROR: Using Xinerama instead of RandR. This option should be avoided at all cost because it does not refresh the list of screens, so you cannot configure displays at runtime. Please check if your driver really does not support RandR and disable this option as soon as you can.
+i3: Cannot open display

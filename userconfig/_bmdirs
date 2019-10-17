@@ -1,0 +1,6 @@
+t       /usr/src/st
+r       $SALTRICED
+s       $SCRIPTSD
+p       $SALTRICED/progconfig
+w       /usr/src/dwm
+f       $HOME/school/foundations/

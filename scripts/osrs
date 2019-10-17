@@ -1,0 +1,2 @@
+#/!bin/sh
+cd ~/'runescape/oldschool' && java -Duser.home='.' -Djava.class.path='jagexappletviewer.jar' -Dcom.jagex.config='http://oldschool.runescape.com/jav_config.ws' 'jagexappletviewer' 'oldschool' & disown

@@ -1,7 +1,7 @@
 
 # housekeeping
 for_window [class="^,*"] border pixel 2
-set $igap 10
+set $igap 8
 set $ogap 6
 
 set $mod Mod4
@@ -33,12 +33,12 @@ bindsym $mod+l          exec i3lock -e -i ~/.config/wall.png
 
 # defaults
 bindsym $mod+Return exec $term
-bindsym $mod+Shift+Return exec samedir # TODO fix this, it doesnt work from i3...
+bindsym $mod+Shift+Return exec samedir
 
 
 bindsym $mod+q kill
 
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec dmenu_run -l 30
 
 # bindsym $mod+j focus left
 # bindsym $mod+k focus down
@@ -112,8 +112,8 @@ bindsym $mod+Shift+Tab workspace back_and_forth
 
 bindsym $mod+F2 reload
 bindsym $mod+F1 restart
-bindsym $mod+Shift+e exec "bash ~/.scripts/i3_exit_prompt"
-# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "bash ~/.scripts/i3_exit_prompt"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 mode "resize" {
 

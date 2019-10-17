@@ -1,0 +1,2 @@
+#!/bin/sh
+rm $HOME/.local/share/nvim/swap/*

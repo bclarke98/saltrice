@@ -1,0 +1,17 @@
+# Basics
+
+super + Return
+    $TERMINAL
+
+super + w
+    $BROWSER
+
+super + a
+    pavucontrol
+
+super + shift + a
+    $TERMINAL -e pulsemixer
+
+super + shift + l
+    i3lock -e -i ~/.config/wall.png
+

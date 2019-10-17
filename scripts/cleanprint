@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# make sure a file was actually provided
+[ -z $1 ] && echo "Format: $0 [filename]" && exit
+# make sure that the file actually exists
+[ ! -f $1 ] && echo "Error: '$1' does not exist." && exit
+
+cat $1 | sed -e '/^$/d' | sed -e '/^#/d'

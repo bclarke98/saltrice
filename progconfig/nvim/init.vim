@@ -21,6 +21,10 @@ filetype plugin on
 set number relativenumber
 set wildmode=longest,list,full
 
+let $BASH_ENV = "$SALTRICED/userconfig/_aliasrc"
+
+"set shell=/bin/bash\ --rcfile\ ~/.profile
+
 " tabs = "    "
 set tabstop=4
 " tabs = "    "
@@ -64,6 +68,7 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+
 " change autocomplete to CTRL-Space
 " SHORTCUT: <CTRL-Space>    autocomplete
 inoremap <C-Space> <C-n>
@@ -81,20 +86,28 @@ autocmd BufRead,BufNewFile *.tex set filetype=tex
 autocmd VimLeave *.tex !texclear %
 
 " refresh ctags when closing specified files
-autocmd VimLeave *.c,*.cpp,*.py,*.h !ctags -R .
-autocmd VimLeave *.c,*.cpp,*.h make clean >/dev/null 2>&1
+autocmd VimLeave *.c,*.cpp,*.py,*.h,*.hpp !ctags -R .
+autocmd VimLeave *.c,*.cpp,*.h,*.hpp make clean >/dev/null 2>&1
 
-" SHORTCUT: <ALT-r>    Replace text under cursor
+" SHORTCUT: <ALT-r>    Replace text under cursor (only on current line)
 map <M-r> :s/\<<C-r><C-w>\>//g<Left><Left>
 inoremap <M-r> :s/\<<C-r><C-w>\>//g<Left><Left>
+
+" SHORTCUT: <ALT-SHIFT-r>    Replace text under cursor (entire file)
+map <M-R> :%s/\<<C-r><C-w>\>//g<Left><Left>
+inoremap <M-R> :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 " SHORTCUT: <F12>   compiles/runs current file depending on filetype
 autocmd FileType sh map <F12> :!sh %<Enter>
 autocmd FileType python map <F12> :!python3 %<Enter>
 autocmd FileType tex map <F12> :!pdflatex %<Enter>
+autocmd FileType tex map <F5> :!pdflatex -synctex=1 -interaction=nonstopmode --shell-escape %<Enter>
 
-autocmd FileType c,cpp,h,hpp map <F5> :!make clean && make<Enter>
-autocmd FileType c,cpp,h,hpp map <F12> :!make clean && make run ARGS=""<left>
+autocmd FileType c,cpp,h,hpp map <F5> :!mc && m<Enter>
+autocmd FileType c,cpp,h,hpp map <F6> :!mc && mt<Enter>
+autocmd FileType c,cpp,h,hpp map <F10> :!mc && ct<Enter>
+autocmd FileType c,cpp,h,hpp map <F11> :!mc && mt && ./test-*<Enter>
+autocmd FileType c,cpp,h,hpp map <F12> :!mc && m run ARGS=""<left>
 
 " TEMPLATES
 " LaTeX
@@ -102,6 +115,7 @@ autocmd BufNewFile *.tex 0r $SNIPPETD/tex.tmpl
 
 " INSERT MODE REMAPS
 " General
+map ,. <++>
 inoremap ,. <++>
 
 " LaTeX

@@ -1,0 +1,47 @@
+#!/bin/sh
+
+FTYPES="c,cpp,sh,py"
+
+function helpmsg(){
+    echo "Format: $0 -f [filetype]"
+    echo "Supported Filetypes:"
+    echo "$FTYPES"
+    exit
+}
+
+function mk_file(){
+    case "$1" in
+            cpp)
+                printf "#include <iostream>\n\nint main(int argc, char* argv[]){\n\t\n\treturn 0;\n}\n"
+                break
+                ;;
+            c)
+                printf "#include <stdio.h>\n\nint main(int argc, char* argv[]){\n\t\n\treturn 0;\n}\n"
+                break
+                ;;
+            sh)
+                printf "#!/bin/sh\n"
+                break
+                ;;
+            py)
+                printf "#!/usr/bin/env python3\n"
+                break
+                ;;
+    esac
+}
+
+while test $# -gt 0; do
+    case "$1" in
+            -h|--help)
+                helpmsg
+                ;;
+            -f|--filetype)
+                shift
+                mk_file $1
+                break
+                ;;
+            *)
+                helpmsg
+                ;;
+        esac
+done

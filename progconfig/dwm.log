@@ -1,0 +1,4 @@
+erresc: unknown csi ESC[22;0;0t
+erresc: unknown str ESC]11
+erresc: unknown csi ESC[23;0;0t
+X connection to :0 broken (explicit kill or server shutdown).

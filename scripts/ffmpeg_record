@@ -1,0 +1,3 @@
+#!/bin/bash
+[ -z $1 ] && echo "Specify filename for video output." && exit;
+ffmpeg -f x11grab -video_size 1920x1080 -framerate 30 -i $DISPLAY -f pulse -i default -c:v libx264 -preset ultrafast -c:a aac $1

@@ -178,6 +178,8 @@ class MakefileBuilder(object):
         MAIN = self.data['MAIN']
         OBJECTS = ' '.join(self.data['OBJECTS'])
         LIBS = ('LIBS = ' + ' '.join(self.data['LIBS'])) if len(self.data['LIBS']) > 0 else ''
+        EXE = 'EXE = ' + self.data['EXE']
+        self.data['EXE'] = '$(EXE)'
 
         output_recipe = 'all : %s\n\n' % self.data['EXE'] + 'run: %s\n\t./%s ${ARGS}\n\n' % (self.data['EXE'], self.data['EXE'])
         output_recipe += str(MakeRecipe(self.data['EXE'], '$(OBJECTS)', '$(CC) $(CFLAGS) -o %s $(OBJECTS) ' % (self.data['EXE']) + ('$(LIBS)' if len(self.data['LIBS']) > 0 else '')))
@@ -194,7 +196,6 @@ class MakefileBuilder(object):
             recipes += tr
 
         recipes += str(MakeRecipe('clean', '', '-@rm %s $(OBJECTS) 2>/dev/null || true' % self.data['EXE'])) + '\n\n'
-        recipes += str(MakeRecipe('oclean', '', '-@rm $(OBJECTS) 2>/dev/null || true'))
 
         mf = (MAKEFILE_TEMPLATE % (CC, CFLAGS, MAIN, OBJECTS, LIBS, output_recipe)) + '\n' + recipes
         return mf + '\n'

@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# This script takes the contents of _bmfiles [bookmarked files],
+# $SALTRICED/userconfig/_bmdirs [bookmarked directories], and _bmprogs [bookmarked programs]
+# and creates an _aliasrc file from the contents
+
+BMFILES=$(cat $SALTRICED/userconfig/_bmfiles | awk '!/^ *#/ && NF' | awk '{ printf "cf%s=\"$EDITOR %s\" \\\n" , $1, $2 }' | sed -e '$ s/\\//g')
+BMDIRS=$(cat $SALTRICED/userconfig/_bmdirs | awk '!/^ *#/ && NF' | awk '{ printf "cd%s=\"cd %s\" \\\n" , $1, $2 }' | sed -e '$ s/\\//g')
+BMPROGS=$(cat $SALTRICED/userconfig/_bmprogs | awk '!/^ *#/ && NF' | awk '{ printf "%s=", $1; $1=""; printf "\"%s\" \\\n", $0 }' | sed -e 's/" */"/' | sed -e '$ s/\\//g')
+
+echo "shopt -s expand_aliases" > $SALTRICED/userconfig/_aliasrc
+echo "# PROGRAMS" >> $SALTRICED/userconfig/_aliasrc
+echo "alias $BMPROGS" >> $SALTRICED/userconfig/_aliasrc
+echo "# FILES" >> $SALTRICED/userconfig/_aliasrc
+echo "alias $BMFILES" >> $SALTRICED/userconfig/_aliasrc
+echo "# DIRECTORIES" >> $SALTRICED/userconfig/_aliasrc
+echo "alias $BMDIRS" >> $SALTRICED/userconfig/_aliasrc
+
+# echo "# PROGRAMS"
+# echo "alias $BMPROGS"
+# echo "# FILES"
+# echo "alias $BMFILES"
+# echo "# DIRECTORIES"
+# echo "alias $BMDIRS"

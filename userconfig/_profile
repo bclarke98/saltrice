@@ -3,6 +3,7 @@ export EDITOR="nvim"
 export TERMINAL="st"
 export FILE="ranger"
 export BROWSER="google-chrome-stable"
+export VIEWER="sxiv"
 
 # PS1 is the environment variable for the format of the bash prompt text
 # Ex: [username@computername ~/path/to/current/directory]$
@@ -20,11 +21,19 @@ export XDG_CONFIG_HOME="$CONFIGD"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$SCRIPTSD:$PATH"
 
+export ARDMK_DIR="/usr/src/mk-arduino"
+export ARDUINO_DIR="/usr/src/arduino"
+export AVR_TOOLS_DIR="/usr/"
+
+if [ -d /usr/java ]; then
+    export JAVAD="/usr/java/jdk1.8.0_211/bin"
+    export PATH="$PATH:$JAVAD"
+fi
+
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
 # load aliases
 [ -f $SALTRICED/userconfig/_aliasrc ] && source $SALTRICED/userconfig/_aliasrc
-[ -f $SALTRICE/userconfig/_aliasrc ] && source $SALTRICE/userconfig/_aliasrc
 
 # load pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
@@ -32,5 +41,6 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 # If not running an interactive shell and i3 isn't already running, start i3
-[[ $- == *i* ]] && true ||  [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx
+# [[ $- == *i* ]] && true ||  [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx
+# [[ $- == *i* ]] && true ||  [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x dwm >/dev/null && exec startx
 

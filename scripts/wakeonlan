@@ -1,0 +1,3 @@
+#!/bin/sh
+# enables Wake-On-LAN
+sudo ethtool -s enp24s0 wol g

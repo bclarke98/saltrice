@@ -1,0 +1,10 @@
+v       ~/.vimrc
+k       ~/.config/sxhkd/sxhkdrc
+x       ~/.xinitrc
+i       ~/.config/i3/config
+a       $SALTRICED/userconfig/_bmprogs
+f       $SALTRICED/userconfig/_bmfiles
+d       $SALTRICED/userconfig/_bmdirs
+b       ~/.bashrc
+p       ~/.bash_profile
+

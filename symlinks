@@ -1,5 +1,6 @@
 userconfig/_bashrc        .bashrc
 userconfig/_profile       .bash_profile
+userconfig/_profile       .profile
 progconfig                .config
 progconfig/nvim/init.vim  .vimrc
 userconfig/_aliasrc       .config/aliasrc

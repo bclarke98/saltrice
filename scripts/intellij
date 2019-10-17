@@ -1,0 +1,2 @@
+#!/bin/sh
+[ -d /usr/src/intellij ] && sh /usr/src/intellij/bin/idea.sh & disown
