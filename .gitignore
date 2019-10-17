@@ -4,5 +4,6 @@ progconfig/nvim/plugged
 progconfig/pulse/
 progconfig/neofetch/
 progconfig/pavucontrol.ini
+progconfig/spotify/*
 scripts/tags
 *.pyc
