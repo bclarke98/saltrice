@@ -1,8 +1,0 @@
-#!/bin/sh
-ID=$(xdpyinfo | grep focus | cut -f4 -d " ")
-PID=$(($(xprop -id $ID | grep -m 1 PID | cut -d " " -f 3) + 2))
-if [ -e "/proc/$PID/cwd" ]; then
-	$TERMINAL -e "cd $(readlink /proc/$PID/cwd) && exec $SHELL"
-else
-    $TERMINAL &
-fi

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 # set up directories and make sure lsp.ignore is sorted if it exists
 [ ! -d $SCRIPTSD/tmpfiles ] && mkdir $SCRIPTSD/tmpfiles
 [ ! -f $SCRIPTSD/lsp.ignore ] && touch $SCRIPTSD/lsp.ignore || sort $SCRIPTSD/lsp.ignore -o $SCRIPTSD/lsp.ignore

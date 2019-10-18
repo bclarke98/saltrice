@@ -1,2 +1,2 @@
-#!/bin/bash
+#!/usr/bin/env bash
 xrandr --query | grep " connected" | cut -d" " -f1

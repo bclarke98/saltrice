@@ -30,6 +30,7 @@ bindsym $mod+a          exec $term -e pulsemixer
 bindsym $mod+Shift+a    exec pavucontrol
 
 bindsym $mod+l          exec i3lock -e -i ~/.config/wall.png
+bindsym $mod+Print      exec --no-startup-id ffmpeg_record
 
 # defaults
 bindsym $mod+Return exec $term

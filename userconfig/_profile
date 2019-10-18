@@ -1,4 +1,5 @@
 #!/bin/sh
+#export EDITOR="nvim -u /home/salty/.config/nvim/init.vim"
 export EDITOR="nvim"
 export TERMINAL="st"
 export FILE="ranger"

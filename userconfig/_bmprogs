@@ -10,6 +10,7 @@ mt          m test
 ct          m chktest
 py          python3
 sv          sudo -E $EDITOR
+se          findmyshit
 vg          valgrind
 cmf         python3 $SCRIPTSD/cmf.py
 vim         $EDITOR

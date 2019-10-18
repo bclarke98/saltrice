@@ -1,2 +1,2 @@
 #!/bin/sh
-java -jar /usr/src/runelite/RuneLite.jar
+java -jar /usr/src/runelite/RuneLite.jar >/dev/null 2>&1 & disown

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#:: Search through all available pacman packages in fzf
+pacman -Slq | fzf -m --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S

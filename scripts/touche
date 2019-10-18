@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 FTYPES="c,cpp,sh,py"
 
@@ -20,7 +20,7 @@ function mk_file(){
                 break
                 ;;
             sh)
-                printf "#!/bin/sh\n"
+                printf "#!/usr/bin/env sh\n"
                 break
                 ;;
             py)

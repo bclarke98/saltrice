@@ -54,11 +54,13 @@ module-margin-right = 3
 background = ${colors.transparent}
 foreground = ${colors.foreground}
 
-font-0 = NotoSans-Regular:size=10;1
+font-0 = RobotoMono:pixelsize=10;1
 font-1 = siji:pixelsize=10;1
-font-2 = NotoMono-Regular:size=10;1
 
 separator = |
+modules-left = i3
+; modules-center =
+; modules-right =
 
 [module/i3]
 type = internal/i3
@@ -70,6 +72,12 @@ wrapping-scroll = false
 label-mode = %mode%
 label-mode-padding = 2
 
-
+[module/spotify]
+type = custom/script
+interval = 1
+format-prefix = "  "
+format = <label>
+exec = python /home/salty/.config/polybar/spotify_status.py -f '{artist}: {song}'
+format_underline = #1db954
 
 ; vim:ft=dosini

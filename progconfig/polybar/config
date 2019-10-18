@@ -55,7 +55,7 @@ font-0 = RobotoMono:pixelsize=10;1
 font-1 = siji:pixelsize=10;1
 
 modules-left = bspwm i3
-modules-center = mpd
+modules-center = spotify
 ; modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
 modules-right = filesystem pulseaudio memory cpu wlan eth battery temperature date powermenu
 
@@ -419,5 +419,13 @@ screenchange-reload = true
 [global/wm]
 margin-top = 5
 margin-bottom = 5
+
+[module/spotify]
+type = custom/script
+interval = 1
+format-prefix = " "
+format = <label>
+exec = python /home/salty/.config/polybar/spotify_status.py -f '{artist}: {song}'
+format_underline = #1db954
 
 ; vim:ft=dosini
