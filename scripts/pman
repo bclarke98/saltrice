@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+man -k . | awk '{print $1}' | sort | fzf -e | xargs -r man -Tpdf > /tmp/tmpman.pdf
+[ ! -s /tmp/tmpman.pdf ] && exit;
+zathura --fork /tmp/tmpman.pdf > /dev/null 2>&1
