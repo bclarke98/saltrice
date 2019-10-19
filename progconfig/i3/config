@@ -1,4 +1,3 @@
-
 # housekeeping
 for_window [class="^,*"] border pixel 2
 set $igap 8
@@ -16,6 +15,15 @@ gaps outer $ogap
 font pango:monospace 14
 floating_modifier $mod
 focus_follows_mouse no
+
+# Dropdown Windows
+for_window [instance="dropdown_*"] floating enable
+for_window [instance="dropdown_*"] move scratchpad
+for_window [instance="dropdown_*"] sticky enable
+for_window [instance="dropdown_*"] scratchpad show
+for_window [instance="dropdown_term"] resize set 800 500
+for_window [instance="dropdown_*"] move position center
+
 # startup
 exec --no-startup-id xcompmgr
 exec --no-startup-id xwallpaper --zoom ~/.config/wall2.png
@@ -34,12 +42,12 @@ bindsym $mod+Print      exec --no-startup-id ffmpeg_record
 
 # defaults
 bindsym $mod+Return exec $term
-bindsym $mod+Shift+Return exec samedir
+bindsym $mod+Shift+Return exec --no-startup-id ddspawn
 
 
 bindsym $mod+q kill
 
-bindsym $mod+d exec dmenu_run -l 30
+bindsym $mod+d exec --no-startup-id dmenu_run -l 30
 
 # bindsym $mod+j focus left
 # bindsym $mod+k focus down
