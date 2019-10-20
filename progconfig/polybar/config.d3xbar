@@ -80,4 +80,13 @@ format = <label>
 exec = python /home/salty/.config/polybar/spotify_status.py -f '{artist}: {song}'
 format_underline = #1db954
 
+[module/recording]
+type = custom/script
+interval = 1
+format-prefix = " "
+format = <label>
+exec = echo REC
+exec-if = pgrep -x ffmpeg
+format-underline = #f90000
+
 ; vim:ft=dosini
