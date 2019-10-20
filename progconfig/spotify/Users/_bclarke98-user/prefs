@@ -1,6 +1,0 @@
-audio.sync_bitrate_enumeration=4
-ui.track_notifications_enabled=false
-gaia.known_zeroconf="{\"a40fa9f5433c7ba1cb1e730a0b61a5322f2771e3\":{\"known\":false,\"popularity\":5,\"prio\":\"connect\",\"shown\":0}}"
-audio.play_bitrate_enumeration=4
-ui.hide_hpto=true
-app.player.volume=32886

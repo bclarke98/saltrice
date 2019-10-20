@@ -5,5 +5,7 @@ progconfig/pulse/
 progconfig/neofetch/
 progconfig/pavucontrol.ini
 progconfig/spotify/*
+progconfig/mpd/log
+progconfig/mpd/state
 scripts/tags
 *.pyc

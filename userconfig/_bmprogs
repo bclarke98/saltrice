@@ -5,12 +5,14 @@ l           ls -a
 ls          ls -h --group-directories-first --color=auto
 ll          ls -l
 la          ls -la
+bt          bluetoothctl
 mc          m clean
 mt          m test
 ct          m chktest
 py          python3
 sv          sudo -E $EDITOR
 se          findmyshit
+sf          touche
 vg          valgrind
 cse         source cdtomyshit
 cmf         python3 $SCRIPTSD/cmf.py

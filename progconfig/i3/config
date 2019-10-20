@@ -27,7 +27,7 @@ for_window [instance="dropdown_*"] move position center
 
 # startup
 exec --no-startup-id xcompmgr
-exec --no-startup-id xwallpaper --output HDMI-0 ~/.config/wall2.png
+exec --no-startup-id setwall
 exec --no-startup-id mpd
 exec --no-startup-id unclutter
 exec_always $polytog
@@ -38,7 +38,7 @@ bindsym $mod+r          exec $term -e $FILE
 bindsym $mod+a          exec $term -e pulsemixer
 bindsym $mod+Shift+a    exec pavucontrol
 
-bindsym $mod+l          exec i3lock -e -i ~/.config/wall.png
+bindsym $mod+l          exec lckdwn
 bindsym $mod+Print      exec --no-startup-id ffmpeg_record
 
 # defaults

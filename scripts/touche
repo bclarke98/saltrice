@@ -27,6 +27,10 @@ function mk_file(){
                 printf "#!/usr/bin/env python3\n"
                 break
                 ;;
+            *)
+                printf "#!/usr/bin/env %s" $1
+                break
+                ;;
     esac
 }
 

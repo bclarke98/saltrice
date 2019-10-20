@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+[[ -z $(pgrep xwallpaper) ]] && pkill xwallpaper >/dev/null 2>&1
+xwallpaper --daemon --zoom ~/pics/blackhole.png
+# xwallpaper --no-randr --center ~/pics/blackhole.png
