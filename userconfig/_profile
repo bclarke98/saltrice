@@ -33,6 +33,9 @@ fi
 
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
+HISTSIZE=
+HISTFILESIZE=
+
 # load aliases
 [ -f $SALTRICED/userconfig/_aliasrc ] && source $SALTRICED/userconfig/_aliasrc
 

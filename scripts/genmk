@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+
+function findobj(){
+    find . -name "*.$1" | sort | sed "s/.$1/.o/g" | sed "s/.\///g" | tr '\n' ' ';
+}
+
+CC="g++"
+CFLAGS="-Og -Wall"
+MAIN="main.o"
+OBJECTS="$(findobj cpp)"
+EXE="$(pwd | awk -F'/' '{print $NF}')"
+LIBS=""
+
+function usage(){
+    echo '[EasyMake-Sh]'
+    echo 'To list options, run this script with "-h" or "--help"'
+    echo ''
+    echo 'usage: genmk [-h] [-c COMPILER] [-f CFLAGS] [-l LIBS] [-m MAIN_FILE]'
+    echo '               [-e EXE]'
+    echo ''
+    echo '[EasyMake-Sh] A Dynamic Makefile Generator'
+    echo ''
+    echo 'optional arguments:'
+    echo '  -h, --help       show this help message and exit'
+    echo '  -c COMPILER      specify compiler to use (gcc/g++/etc)'
+    echo '  -e EXE           specify outputted executable name'
+    echo '  -f CFLAGS        specify flags for gcc/g++'
+    echo '  -l LIBS          link external libraries separated by spaces'
+    echo '  -m MAIN_FILE     path to main file for project'
+    exit
+}
+
+while test $# -gt 0; do
+    case "$1" in
+        -h|--help)
+            usage
+            ;;
+        -c|--cc)
+            shift
+            CC="$1"
+            [[ "$CC" == "gcc" ]] && OBJECTS=$(findobj c)
+            shift
+            ;;
+        -f|--flags)
+            shift
+            CFLAGS="$1"
+            shift
+            ;;
+        -e|--exe)
+            shift
+            EXE="$1"
+            shift
+            ;;
+        -m|--main)
+            shift
+            MAIN="$1"
+            shift
+            ;;
+        -l|--libs)
+            shift
+            LIBS="$1"
+            shift
+            ;;
+    esac
+done
+
+echo "CC: $CC"
+echo "CFLAGS: $CFLAGS"
+echo "MAIN: $MAIN"
+echo "OBJECTS: $OBJECTS"
+echo "EXE: $EXE"
+echo "LIBS: $LIBS"
+[[ "$CC" == "gcc" ]] && echo '%.o: %.c' || echo '%.o: %.cpp'
+echo '	$(CC) -c -o $@ $< $(CFLAGS)'
+echo ''
+echo '$(EXE): $(OBJECTS)'
+echo '	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)'
