@@ -64,12 +64,12 @@ while test $# -gt 0; do
     esac
 done
 
-echo "CC: $CC"
-echo "CFLAGS: $CFLAGS"
-echo "MAIN: $MAIN"
-echo "OBJECTS: $OBJECTS"
-echo "EXE: $EXE"
-echo "LIBS: $LIBS"
+echo "CC =  $CC"
+echo "CFLAGS =  $CFLAGS"
+echo "MAIN =  $MAIN"
+echo "OBJECTS =  $OBJECTS"
+echo "EXE =  $EXE"
+echo "LIBS =  $LIBS"
 [[ "$CC" == "gcc" ]] && echo '%.o: %.c' || echo '%.o: %.cpp'
 echo '	$(CC) -c -o $@ $< $(CFLAGS)'
 echo ''
