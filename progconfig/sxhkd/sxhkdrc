@@ -13,5 +13,12 @@ super + shift + a
     $TERMINAL -e pulsemixer
 
 super + shift + l
-    i3lock -e -i ~/.config/wall.png
+    lckdwn
+
+super + Print
+    ffmpeg_record
+
+super + d
+    dmenu_run -l 30
+
 

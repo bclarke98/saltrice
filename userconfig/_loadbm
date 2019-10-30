@@ -8,7 +8,7 @@ BMFILES=$(cat $SALTRICED/userconfig/_bmfiles | awk '!/^ *#/ && NF' | awk '{ prin
 BMDIRS=$(cat $SALTRICED/userconfig/_bmdirs | awk '!/^ *#/ && NF' | awk '{ printf "cd%s=\"cd %s\" \\\n" , $1, $2 }' | sed -e '$ s/\\//g')
 BMPROGS=$(cat $SALTRICED/userconfig/_bmprogs | awk '!/^ *#/ && NF' | awk '{ printf "%s=", $1; $1=""; printf "\"%s\" \\\n", $0 }' | sed -e 's/" */"/' | sed -e '$ s/\\//g')
 
-echo "shopt -s expand_aliases" > $SALTRICED/userconfig/_aliasrc
+#echo "shopt -s expand_aliases" > $SALTRICED/userconfig/_aliasrc
 echo "# PROGRAMS" >> $SALTRICED/userconfig/_aliasrc
 echo "alias $BMPROGS" >> $SALTRICED/userconfig/_aliasrc
 echo "# FILES" >> $SALTRICED/userconfig/_aliasrc

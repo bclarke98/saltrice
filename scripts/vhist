@@ -1,0 +1,4 @@
+#!/bin/sh
+tmpfile=$(mktemp /tmp/st-edit.XXXXXX)
+cat > "$tmpfile"
+$TERMINAL -e "$EDITOR" "$tmpfile"

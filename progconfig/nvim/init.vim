@@ -21,8 +21,8 @@ filetype plugin on
 set number relativenumber
 set wildmode=longest,list,full
 
-let $BASH_ENV = "$SALTRICED/userconfig/_aliasrc"
-
+"let $BASH_ENV = "$SALTRICED/userconfig/_aliasrc"
+set shell=zsh\ -i
 "set shell=/bin/bash\ --rcfile\ ~/.profile
 
 " tabs = "    "
@@ -117,6 +117,9 @@ autocmd BufNewFile *.tex 0r $SNIPPETD/tex.tmpl
 " General
 map ,. <++>
 inoremap ,. <++>
+
+inoremap ,eps ε
+inoremap ,del δ
 
 " LaTeX
 autocmd FileType tex inoremap ,pp \paragraph{}<Enter><++><Esc>kf}i

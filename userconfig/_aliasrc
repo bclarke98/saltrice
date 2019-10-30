@@ -1,4 +1,4 @@
-shopt -s expand_aliases
+# shopt -s expand_aliases
 # PROGRAMS
 alias v="$EDITOR" \
 m="make -j$(nproc)" \
@@ -27,7 +27,7 @@ swpi="ssh pi@10.0.0.49" \
 rlbm="sh $SALTRICED/userconfig/_loadbm && source $HOME/.profile" \
 adev="sudo arduino & disown" \
 grep="grep --color=auto" \
-pls="sudo" 
+pls="sudo"
 # FILES
 alias cfv="$EDITOR ~/.vimrc" \
 cfk="$EDITOR ~/.config/sxhkd/sxhkdrc" \
@@ -37,11 +37,11 @@ cfa="$EDITOR $SALTRICED/userconfig/_bmprogs" \
 cff="$EDITOR $SALTRICED/userconfig/_bmfiles" \
 cfd="$EDITOR $SALTRICED/userconfig/_bmdirs" \
 cfb="$EDITOR ~/.bashrc" \
-cfp="$EDITOR ~/.bash_profile" 
+cfp="$EDITOR ~/.bash_profile"
 # DIRECTORIES
 alias cdt="cd /usr/src/st" \
 cdr="cd $SALTRICED" \
 cds="cd $SCRIPTSD" \
 cdp="cd $SALTRICED/progconfig" \
 cdw="cd /usr/src/dwm" \
-cdf="cd $HOME/school/foundations/" 
+cdf="cd $HOME/school/foundations/"
