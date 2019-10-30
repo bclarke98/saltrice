@@ -5,7 +5,8 @@ Plug 'junegunn/goyo.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'jreybert/vimagit'
 Plug 'vimwiki/vimwiki'
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
 Plug 'vifm/vifm.vim'
 call plug#end()
@@ -87,7 +88,7 @@ autocmd VimLeave *.tex !texclear %
 
 " refresh ctags when closing specified files
 autocmd VimLeave *.c,*.cpp,*.py,*.h,*.hpp !ctags -R .
-autocmd VimLeave *.c,*.cpp,*.h,*.hpp make clean >/dev/null 2>&1
+" autocmd VimLeave *.c,*.cpp,*.h,*.hpp make clean >/dev/null 2>&1
 
 " SHORTCUT: <ALT-r>    Replace text under cursor (only on current line)
 map <M-r> :s/\<<C-r><C-w>\>//g<Left><Left>

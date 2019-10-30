@@ -6,5 +6,5 @@ a       $SALTRICED/userconfig/_bmprogs
 f       $SALTRICED/userconfig/_bmfiles
 d       $SALTRICED/userconfig/_bmdirs
 b       ~/.bashrc
-p       ~/.bash_profile
-
+p       ~/.profile
+z       ~/.config/zsh/.zshrc

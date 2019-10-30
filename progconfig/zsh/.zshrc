@@ -1,6 +1,6 @@
 
 autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+export PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 
 HISTSIZE=10000
 SAVEHIST=10000
@@ -12,26 +12,10 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 _comp_options+=(globdots)
+setopt COMPLETE_ALIASES
 
-# vi mode
-bindkey -v
-export KEYTIMEOUT=1
-
-function zle-keymap-select {
-    if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
-        echo -ne '\e[1 q'
-    elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] ||
-        [[ ${KEYMAP} == '' ]] || [[ $1 = 'beam' ]]; then
-        echo -ne '\e[5 q'
-    fi
-}
-zle -N zle-keymap-select
-zle-line-init(){
-    zle -K viins # initiate vi insert as keymap
-}
-zle -N zle-line-init
-echo -ne '\e[5 q' # use beam shape cursor on startup
-preexec() { echo -ne '\e[5 q'; }
+_fix_cursor() { echo -ne '\e[5 q'; }
+precmd_functions+=(_fix_cursor)
 
 lfcd(){
     tmp="$(mktemp)"
@@ -47,6 +31,8 @@ bindkey -s '^o' 'lfcd\n'
 
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word
 
 [ -f $SALTRICED/userconfig/_aliasrc ] && source $SALTRICED/userconfig/_aliasrc
 
