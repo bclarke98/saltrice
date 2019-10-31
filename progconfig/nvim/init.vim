@@ -69,6 +69,9 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+nmap <C-s> :w<CR>
+imap <C-s> <Esc>:w<CR>a
+vmap <C-s> <Esc>:w<CR>
 
 " change autocomplete to CTRL-Space
 " SHORTCUT: <CTRL-Space>    autocomplete

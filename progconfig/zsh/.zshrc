@@ -13,6 +13,8 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)
 setopt COMPLETE_ALIASES
+setopt SHWORDSPLIT
+setopt NO_FLOW_CONTROL
 
 _fix_cursor() { echo -ne '\e[5 q'; }
 precmd_functions+=(_fix_cursor)
