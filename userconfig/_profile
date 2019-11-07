@@ -1,39 +1,7 @@
 #!/bin/zsh
-#export EDITOR="nvim -u /home/salty/.config/nvim/init.vim"
-export EDITOR="nvim"
-export TERMINAL="st"
-export FILE="ranger"
-export BROWSER="google-chrome-stable"
-export VIEWER="sxiv"
 
-# PS1 is the environment variable for the format of the bash prompt text
-# Ex: [username@computername ~/path/to/current/directory]$
-# default PS1: "[\u@\h \W]\$ "
-export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
-
-export SALTRICED="$HOME/.ez_arch/saltrice"
-export SCRIPTSD="$SALTRICED/scripts"
-export CONFIGD="$HOME/.config"
-export SNIPPETD="$SALTRICED/snippets"
-export LATEXD="$HOME/Documents/LaTeX"
-
-export XDG_CONFIG_HOME="$CONFIGD"
-
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$SCRIPTSD:$PATH"
-
-export ZDOTDIR="$CONFIGD/zsh"
-
-export ARDMK_DIR="/usr/src/mk-arduino"
-export ARDUINO_DIR="/usr/src/arduino"
-export AVR_TOOLS_DIR="/usr"
-
-if [ -d /usr/java ]; then
-    export JAVAD="/usr/java/jdk1.8.0_211/bin"
-    export PATH="$PATH:$JAVAD"
-fi
-
-export RANGER_LOAD_DEFAULT_RC=FALSE
+export SALTRICED="/home/salty/.ez_arch/saltrice"
+[ -f $SALTRICED/userconfig/_exports ] && source $SALTRICED/userconfig/_exports
 
 HISTSIZE=
 HISTFILESIZE=
@@ -46,6 +14,52 @@ if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
 fi
 
+
+
+
+
+
+
+
+
+
+
+#export EDITOR="nvim -u /home/salty/.config/nvim/init.vim"
+# export EDITOR="nvim"
+# export TERMINAL="st"
+# export FILE="ranger"
+# export BROWSER="google-chrome-stable"
+# export VIEWER="sxiv"
+
+# PS1 is the environment variable for the format of the bash prompt text
+# NOTE: this format is for ba(sh), NOT ZSH
+# Ex: [username@computername ~/path/to/current/directory]$
+# default PS1: "[\u@\h \W]\$ "
+# export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\w\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+
+# export SALTRICED="/home/salty/.ez_arch/saltrice"
+# export SCRIPTSD="$SALTRICED/scripts"
+# export CONFIGD="$HOME/.config"
+# export SNIPPETD="$SALTRICED/snippets"
+# export LATEXD="$HOME/Documents/LaTeX"
+#
+# export XDG_CONFIG_HOME="$CONFIGD"
+#
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$SCRIPTSD:$PATH"
+#
+# export ZDOTDIR="$CONFIGD/zsh"
+#
+# export ARDMK_DIR="/usr/src/mk-arduino"
+# export ARDUINO_DIR="/usr/src/arduino"
+# export AVR_TOOLS_DIR="/usr"
+#
+# if [ -d /usr/java ]; then
+#     export JAVAD="/usr/java/jdk1.8.0_211/bin"
+#     export PATH="$PATH:$JAVAD"
+# fi
+#
+# export RANGER_LOAD_DEFAULT_RC=FALSE
 # If not running an interactive shell and i3 isn't already running, start i3
 # [[ $- == *i* ]] && true ||  [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx
 # [[ $- == *i* ]] && true ||  [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x dwm >/dev/null && exec startx

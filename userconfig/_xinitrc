@@ -32,4 +32,5 @@ fi
 # xwallpaper --zoom ~/.config/wall2.png &
 # lddwm
 # exec dwm
+numlockx &
 exec i3

@@ -5,6 +5,7 @@ i       ~/.config/i3/config
 a       $SALTRICED/userconfig/_bmprogs
 f       $SALTRICED/userconfig/_bmfiles
 d       $SALTRICED/userconfig/_bmdirs
+e       $SALTRICED/userconfig/_exports
 b       ~/.bashrc
 p       ~/.profile
 z       ~/.config/zsh/.zshrc

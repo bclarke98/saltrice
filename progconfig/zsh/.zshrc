@@ -1,3 +1,8 @@
+#!/usr/bin/env zsh
+#
+export SALTRICED="/home/salty/.ez_arch/saltrice"
+[ -f $SALTRICED/userconfig/_exports ] && source $SALTRICED/userconfig/_exports
+[ -f $SALTRICED/userconfig/_aliasrc ] && source $SALTRICED/userconfig/_aliasrc
 
 autoload -U colors && colors
 export PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
@@ -35,7 +40,7 @@ autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
+bindkey '^r' history-incremental-search-backward
 
-[ -f $SALTRICED/userconfig/_aliasrc ] && source $SALTRICED/userconfig/_aliasrc
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

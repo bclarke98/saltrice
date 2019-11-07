@@ -1,0 +1,29 @@
+#!/bin/sh
+export EDITOR="nvim"
+export TERMINAL="st"
+export FILE="ranger"
+export BROWSER="google-chrome-stable"
+export VIEWER="sxiv"
+
+export SCRIPTSD="$SALTRICED/scripts"
+export CONFIGD="$HOME/.config"
+export SNIPPETD="$SALTRICED/snippets"
+export LATEXD="$HOME/Documents/LaTeX"
+
+export XDG_CONFIG_HOME="$CONFIGD"
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$SCRIPTSD:$PATH"
+
+export ZDOTDIR="$CONFIGD/zsh"
+
+export ARDMK_DIR="/usr/src/mk-arduino"
+export ARDUINO_DIR="/usr/src/arduino"
+export AVR_TOOLS_DIR="/usr"
+
+if [ -d /usr/java ]; then
+    export JAVAD="/usr/java/jdk1.8.0_211/bin"
+    export PATH="$PATH:$JAVAD"
+fi
+
+export RANGER_LOAD_DEFAULT_RC=FALSE

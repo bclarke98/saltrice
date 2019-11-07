@@ -5,16 +5,9 @@ These are the dotfiles that I'm currently using on my Arch Linux install, howeve
 ```
 OS          :   Arch Linux
 WM          :   i3
-Shell       :   bash
+Shell       :   zsh
 Editor      :   neovim
 Terminal    :   bclarke-st (https://github.com/bclarke98/bclarke-st)
-```
-
-## TODO List
-```
-- add font customization
-- make i3bar useful
-- make emojis work
 ```
 
 ## Devices
