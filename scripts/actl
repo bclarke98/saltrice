@@ -1,0 +1,33 @@
+#!/usr/bin/env sh
+
+[ -z $2 ] && num="5" || num="$2"
+
+case $1 in
+    u*) pulsemixer --change-volume +"$num" ;;
+    d*) pulsemixer --change-volume -"$num" ;;
+    m|mute) pulsemixer --toggle-mute ;;
+    truemute) pulsemixer --mute ;;
+    next) playerctl next ;;
+    prev) playerctl previous ;;
+    play) playerctl play ;;
+    pause) playerctl pause ;;
+    playpause) playerctl play-pause ;;
+    restart) playerctl next; playerctl previous ;;
+    now) playerctl metadata --format "{{ artist }} - {{ title }}";;
+    *) cat << EOF
+actl: cli interface for PulseAudio + playerctl
+Options:
+    up NUM      Increase volume
+    down NUM    Decrease volume
+    mute        MUTE = !MUTE
+    truemute    MUTE = TRUE
+    next        Next track
+    prev        Previous track
+    play        PAUSED = FALSE
+    pause       PAUSED = TRUE
+    playpause   PAUSED = ! PAUSED
+    restart     Restart current song
+    now         Prints current song details to STDOUT as [Artist] - [Title]
+    help        Print this message
+EOF
+esac

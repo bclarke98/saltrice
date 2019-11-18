@@ -133,6 +133,20 @@ mode "resize" {
 
 bindsym $mod+Shift+r mode "resize"
 
+bindsym XF86AudioRaiseVolume exec --no-startup-id actl u 10
+bindsym XF86AudioLowerVolume exec --no-startup-id actl d 10
+bindsym XF86AudioPlay exec --no-startup-id actl playpause
+bindsym XF86AudioStop exec --no-startup-id actl pause
+bindsym XF86AudioPrev exec --no-startup-id actl prev
+bindsym XF86AudioNext exec --no-startup-id actl next
+
+# bindsym XF86AudioLowerVolume exec --no-startup-id pulsemixer --change-volume -10
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pulsemixer --change-volume +10
+# bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+# bindsym XF86AudioStop exec --no-startup-id playerctl stop
+# bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+# bindsym XF86AudioNext exec --no-startup-id playerctl next
+
 # bar {
 # 	font pango:monospace 12
 #     status_command i3blocks
