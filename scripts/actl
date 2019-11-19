@@ -2,18 +2,21 @@
 
 [ -z $2 ] && num="5" || num="$2"
 
+ignored=$(playerctl -l | grep chrome | tr '\n' ',')
+[ ! -z $ignored ] && alias pctl="playerctl -i $ignored" || alias pctl="playerctl"
+
 case $1 in
     u*) pulsemixer --change-volume +"$num" ;;
     d*) pulsemixer --change-volume -"$num" ;;
     m|mute) pulsemixer --toggle-mute ;;
     truemute) pulsemixer --mute ;;
-    next) playerctl next ;;
-    prev) playerctl previous ;;
-    play) playerctl play ;;
-    pause) playerctl pause ;;
-    playpause) playerctl play-pause ;;
-    restart) playerctl next; playerctl previous ;;
-    now) playerctl metadata --format "{{ artist }} - {{ title }}";;
+    next)  pctl next ;;
+    prev)  pctl previous ;;
+    play)  pctl play ;;
+    pause) pctl pause ;;
+    playpause) pctl play-pause ;;
+    restart) pctl next; pctl previous ;;
+    now) pctl metadata --format "{{ artist }} - {{ title }}";;
     *) cat << EOF
 actl: cli interface for PulseAudio + playerctl
 Options:

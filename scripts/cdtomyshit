@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 TARG=$(du -a $SALTRICED $HOME/school | awk '{print $2}' | fzf)
 [ ! -z $TARG ] && cd $(dirname "$TARG") && $EDITOR $TARG
-
