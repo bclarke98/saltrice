@@ -57,7 +57,7 @@ font-1 = siji:pixelsize=10;1
 modules-left = bspwm i3
 modules-center = spotify
 ; modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
-modules-right = recording filesystem pulseaudio memory cpu wlan eth battery temperature date powermenu
+modules-right = recording filesystem pulseaudio memory cpu eth temperature date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -263,8 +263,8 @@ interval = 5
 date =
 date-alt = " %Y-%m-%d"
 
-time = %H:%M
-time-alt = %H:%M:%S
+time = %I:%M
+time-alt = %I:%M:%S
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
@@ -275,11 +275,12 @@ label = %date% %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
+format-volume = <label-volume>
+;format-volume = <label-volume> <bar-volume>
 label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}
 
-label-muted = 🔇 muted
+label-muted =  Muted
 label-muted-foreground = #666
 
 bar-volume-width = 10
