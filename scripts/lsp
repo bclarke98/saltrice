@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-function natives() { comm -23 <(sudo pacman -Qqen | sort) <(sudo pacman -Sqg base-devel | sort) | awk '{printf "N %s\n", $1}'; }
+function natives() { comm -23 <(sudo pacman -Qqetn | sort) <(sudo pacman -Sqg base base-devel | sort) | awk '{printf "N %s\n", $1}'; }
 function aurs() { sudo pacman -Qqm | sort | awk '{printf "A %s\n", $1}'; }
-{ natives & aurs; } | sort -k 2 | tr ' ' ',' | tr 'N' ' '
+{ natives & aurs; } | sort -k 2 | tr ' ' ',' | tr 'N' ' ' | grep -v 'nvidia'

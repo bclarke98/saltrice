@@ -70,11 +70,14 @@ echo "MAIN =  $MAIN"
 echo "OBJECTS =  $OBJECTS"
 echo "EXE =  $EXE"
 echo "LIBS =  $LIBS"
-[[ "$CC" == "gcc" ]] && echo '%.o: %.c' || echo '%.o: %.cpp'
-echo '	$(CC) -c -o $@ $< $(CFLAGS)'
-echo ''
 echo '$(EXE): $(OBJECTS)'
 echo '	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)'
+echo ''
+echo 'run: $(EXE)'
+echo '	./$(EXE) ${ARGS}'
+echo ''
+[[ "$CC" == "gcc" ]] && echo '%.o: %.c' || echo '%.o: %.cpp'
+echo '	$(CC) -c -o $@ $< $(CFLAGS)'
 echo ''
 echo 'clean:'
 echo '	-@rm $(EXE) *.o 2>/dev/null || true'
