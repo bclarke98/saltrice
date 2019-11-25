@@ -81,29 +81,42 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
+set $ws10 "0"
 
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+bindsym $mod+1 exec --no-startup-id i3metaws -w $ws1
+bindsym $mod+2 exec --no-startup-id i3metaws -w $ws2
+bindsym $mod+3 exec --no-startup-id i3metaws -w $ws3
+bindsym $mod+4 exec --no-startup-id i3metaws -w $ws4
+bindsym $mod+5 exec --no-startup-id i3metaws -w $ws5
+bindsym $mod+6 exec --no-startup-id i3metaws -w $ws6
+bindsym $mod+7 exec --no-startup-id i3metaws -w $ws7
+bindsym $mod+8 exec --no-startup-id i3metaws -w $ws8
+bindsym $mod+9 exec --no-startup-id i3metaws -w $ws9
+bindsym $mod+0 exec --no-startup-id i3metaws -w $ws10
 
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+1 exec --no-startup-id i3metaws -m $ws1
+bindsym $mod+Shift+2 exec --no-startup-id i3metaws -m $ws2
+bindsym $mod+Shift+3 exec --no-startup-id i3metaws -m $ws3
+bindsym $mod+Shift+4 exec --no-startup-id i3metaws -m $ws4
+bindsym $mod+Shift+5 exec --no-startup-id i3metaws -m $ws5
+bindsym $mod+Shift+6 exec --no-startup-id i3metaws -m $ws6
+bindsym $mod+Shift+7 exec --no-startup-id i3metaws -m $ws7
+bindsym $mod+Shift+8 exec --no-startup-id i3metaws -m $ws8
+bindsym $mod+Shift+9 exec --no-startup-id i3metaws -m $ws9
+bindsym $mod+Shift+0 exec --no-startup-id i3metaws -m $ws10
+
+bindsym $mod+Control+1 exec --no-startup-id i3metaws -M $ws1
+bindsym $mod+Control+2 exec --no-startup-id i3metaws -M $ws2
+bindsym $mod+Control+3 exec --no-startup-id i3metaws -M $ws3
+bindsym $mod+Control+4 exec --no-startup-id i3metaws -M $ws4
+bindsym $mod+Control+5 exec --no-startup-id i3metaws -M $ws5
+bindsym $mod+Control+6 exec --no-startup-id i3metaws -M $ws6
+bindsym $mod+Control+7 exec --no-startup-id i3metaws -M $ws7
+bindsym $mod+Control+8 exec --no-startup-id i3metaws -M $ws8
+bindsym $mod+Control+9 exec --no-startup-id i3metaws -M $ws9
+bindsym $mod+Control+0 exec --no-startup-id i3metaws -M $ws10
+
+exec --no-startup-id i3-msg 'workspace 2' && i3metaws -w $ws2 && i3-msg 'workspace 1' && i3metaws -w $ws1
 
 # workspace keybinds
 bindsym $mod+Tab workspace next
@@ -121,10 +134,10 @@ mode "resize" {
         bindsym j resize shrink height 10 px or 10 ppt
         bindsym h resize grow width 10 px or 10 ppt
 
-        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Right resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize grow width 10 px or 10 ppt
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
