@@ -15,7 +15,14 @@ gaps outer $ogap
 
 font monospace 14
 floating_modifier $mod
+# prevents hovering mouse over containers from changing focus
+# (clicking in a window will still swap focus)
 focus_follows_mouse no
+# prevents mouse from being repositioned by i3 when changing to a workspace
+# on another display
+mouse_warping none
+# hides borders when a workspace has only one container
+hide_edge_borders smart
 
 # Dropdown Windows
 for_window [instance="dropdown_*"] floating enable
@@ -116,7 +123,8 @@ bindsym $mod+Control+8 exec --no-startup-id i3metaws -M $ws8
 bindsym $mod+Control+9 exec --no-startup-id i3metaws -M $ws9
 bindsym $mod+Control+0 exec --no-startup-id i3metaws -M $ws10
 
-exec --no-startup-id i3-msg 'workspace 2' && i3metaws -w $ws2 && i3-msg 'workspace 1' && i3metaws -w $ws1
+exec --no-startup-id i3-msg 'workspace 2' && i3metaws -w $ws2 \
+&& i3-msg 'workspace 1' && i3metaws -w $ws1
 
 # workspace keybinds
 bindsym $mod+Tab workspace next

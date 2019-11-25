@@ -13,7 +13,7 @@ case $1 in
     next)  pctl next ;;
     prev)  pctl previous ;;
     play)  pctl play ;;
-    pause) pctl pause ;;
+    pause) pctl --all-players pause ;;
     playpause) pctl play-pause ;;
     restart) pctl next; pctl previous ;;
     now) pctl metadata --format "{{ artist }} - {{ title }}";;
