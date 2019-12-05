@@ -8,12 +8,15 @@ export VIEWER="sxiv"
 export SCRIPTSD="$SALTRICED/scripts"
 export CONFIGD="$HOME/.config"
 export SNIPPETD="$SALTRICED/snippets"
-export LATEXD="$HOME/Documents/LaTeX"
+export LATEXD="$HOME/dox/LaTeX"
+
+export PATH="$SCRIPTSD:$PATH"
+export PATH="$SCRIPTSD/bin:$PATH"
 
 export XDG_CONFIG_HOME="$CONFIGD"
 
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$SCRIPTSD:$PATH"
+export PATH="$PYENV_ROOT/bin:$PATH"
 
 export ZDOTDIR="$CONFIGD/zsh"
 

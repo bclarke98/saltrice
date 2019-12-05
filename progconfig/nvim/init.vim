@@ -102,7 +102,7 @@ map <M-R> :%s/\<<C-r><C-w>\>//g<Left><Left>
 inoremap <M-R> :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 " SHORTCUT: <F12>   compiles/runs current file depending on filetype
-autocmd FileType sh map <F12> :!sh %<Enter>
+autocmd FileType sh map <F12> :!% <Enter>
 autocmd FileType python map <F12> :!python3 %<Enter>
 autocmd FileType tex map <F12> :!pdflatex %<Enter>
 autocmd FileType tex map <F5> :!pdflatex -synctex=1 -interaction=nonstopmode --shell-escape %<Enter>
@@ -124,6 +124,8 @@ inoremap ,. <++>
 
 inoremap ,eps ε
 inoremap ,del δ
+inoremap ,cir ∘
+inoremap ,cup ∪
 
 " LaTeX
 autocmd FileType tex inoremap ,pp \paragraph{}<Enter><++><Esc>kf}i

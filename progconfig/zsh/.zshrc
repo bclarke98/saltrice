@@ -21,6 +21,22 @@ setopt COMPLETE_ALIASES
 setopt SHWORDSPLIT
 setopt NO_FLOW_CONTROL
 
+bindkey -v
+export KEYTIMEOUT=1
+
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+
+zle -N zle-keymap-select
 _fix_cursor() { echo -ne '\e[5 q'; }
 precmd_functions+=(_fix_cursor)
 
@@ -35,6 +51,7 @@ lfcd(){
 }
 
 bindkey -s '^o' 'lfcd\n'
+bindkey -s '^f' 'cse\n'
 
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
@@ -42,5 +59,9 @@ bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
 bindkey '^r' history-incremental-search-backward
 
+bindkey -M vicmd '^[[1;5C' vi-forward-word
+bindkey -M vicmd '^[[1;5D' vi-backward-word
+bindkey -v '^[[1;5C' vi-forward-word
+bindkey -v '^[[1;5D' vi-backward-word
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

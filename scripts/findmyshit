@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-du -a $SALTRICED $HOME/school | awk '{print $2}' | fzf | xargs -r $EDITOR
+du -a $SALTRICED $HOME/school /usr/src | awk '{print $2}' | fzf | xargs -r $EDITOR

@@ -1,4 +1,0 @@
-#!/bin/sh
-while true; do
-    dwm 2> ~/.config/dwm.log
-done

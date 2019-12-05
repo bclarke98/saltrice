@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+function usage() { echo "$0 [symbol]"; exit 1; }
+[ -z $1 ] && usage
+curl -s -H "Accept: application/json" "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&interval=1min&apikey=G5NI50SLM3KMRVHK&outputsize=full&symbol=$1" > $1.json

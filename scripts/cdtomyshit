@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
-TARG=$(du -a $SALTRICED $HOME/school | awk '{print $2}' | fzf)
-[ ! -z $TARG ] && cd $(dirname "$TARG") && $EDITOR $TARG
+TARG=$(du -a $SALTRICED $HOME/school /usr/src | awk '{print $2}' | fzf)
+if [ ! -z $TARG ]; then
+    [ -d $TARG ] && cd $TARG || cd $(dirname "$TARG")
+fi
+[ ! -d $TARG ] && $EDITOR $TARG

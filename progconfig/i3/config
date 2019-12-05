@@ -37,6 +37,7 @@ exec --no-startup-id xcompmgr
 exec --no-startup-id setwall
 exec --no-startup-id mpd
 exec --no-startup-id unclutter
+exec --no-startup-id xautolock -time 15 -locker 'lckdwn'
 exec_always $polytog
 
 # application keybinds
@@ -54,7 +55,7 @@ bindsym $mod+Shift+Return exec --no-startup-id ddspawn
 
 bindsym $mod+q kill
 
-bindsym $mod+d exec --no-startup-id dmenu_run -l 30
+bindsym $mod+d exec --no-startup-id dmenu_run -c -l 10
 
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -123,7 +124,7 @@ bindsym $mod+Control+8 exec --no-startup-id i3metaws -M $ws8
 bindsym $mod+Control+9 exec --no-startup-id i3metaws -M $ws9
 bindsym $mod+Control+0 exec --no-startup-id i3metaws -M $ws10
 
-exec --no-startup-id i3-msg 'workspace 2' && i3metaws -w $ws2 \
+exec --no-startup-id i3-msg 'workspace 2' && i3metaws -w $ws10 \
 && i3-msg 'workspace 1' && i3metaws -w $ws1
 
 # workspace keybinds
