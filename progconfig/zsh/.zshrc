@@ -53,6 +53,7 @@ lfcd(){
 bindkey -s '^o' 'lfcd\n'
 bindkey -s '^f' 'cse\n'
 
+
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 bindkey '^[[1;5C' forward-word

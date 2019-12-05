@@ -25,6 +25,7 @@ ssm         ssh salty@104.248.52.201
 srec        ffmpeg_record
 swpi        ssh pi@10.0.0.49
 rlbm        sh $SALTRICED/userconfig/_loadbm && source $HOME/.profile
+wmip        curl -L ifconfig.co
 adev        arduino > /dev/null 2>&1 & disown
 grep        grep --color=auto
 pls         sudo
