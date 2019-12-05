@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
-i3lock -e -i ~/pics/blackhole.png # spacelock.png
+
+scrot /tmp/locked.png
+mogrify -scale 10% -scale 1000% /tmp/locked.png
+i3lock -e -i /tmp/locked.png
+sleep 60; pgrep i3lock xset dpms force off
+
+# i3lock -e -i ~/pics/blackhole.png # spacelock.png
 # offset=$(xrandr --query | sed 1q | grep -Eo '[0-9]{4}' | tr '\n' ' ' | awk '{printf "%dx%d", $1, $2}')
 # convert -resize $offset\! ~/.config/wall.png RGB:- | i3lock -e --raw=$offset:rgb --image /dev/stdin
