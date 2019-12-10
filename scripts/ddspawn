@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
-if xwininfo -tree -root | grep "dropdown_term"; then
-    i3 "[instance=\"dropdown_term\"] scratchpad show; [instance=\"dropdown_term\"] move position center" >/dev/null 2>&1
+if pgrep -x i3 > /dev/null; then
+    if xwininfo -tree -root | grep "dropdown_term"; then
+        i3 "[instance=\"dropdown_term\"] scratchpad show; [instance=\"dropdown_term\"] move position center" >/dev/null 2>&1
+    else
+        i3 "exec --no-startup-id $TERMINAL -n dropdown_term" >/dev/null 2>&1
+    fi
 else
-    i3 "exec --no-startup-id $TERMINAL -n dropdown_term" >/dev/null 2>&1
+    id=$(cat /tmp/scratchid)
+    bspc node $id --flag hidden; bspc node -f $id;
 fi

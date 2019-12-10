@@ -6,6 +6,6 @@ a       $SALTRICED/userconfig/_bmprogs
 f       $SALTRICED/userconfig/_bmfiles
 d       $SALTRICED/userconfig/_bmdirs
 e       $SALTRICED/userconfig/_exports
-b       ~/.bashrc
+b       ~/.config/polybar/config
 p       ~/.profile
 z       ~/.config/zsh/.zshrc

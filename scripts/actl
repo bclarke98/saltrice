@@ -2,10 +2,27 @@
 
 [ -z $2 ] && num="5" || num="$2"
 
-ignored=$(playerctl -l | grep chrome | tr '\n' ',')
-[ ! -z $ignored ] && alias pctl="playerctl -i $ignored" || alias pctl="playerctl"
+PLAYERD="$HOME/.cache/.playersel"
+CURPLAY=$(cat $PLAYERD)
+
+function selplayer(){
+    CURPLAY=$(playerctl -l | dmenu -p "Select Player:" -c -l 10)
+    [ ! -z $CURPLAY ] && echo "$CURPLAY" > $PLAYERD
+}
+
+if [ -z "$CURPLAY" ]; then
+    if [ $(playerctl -l | wc -l) -gt 0 ]; then
+        playerctl -l | tr '\n' ',' | awk -F',' '{print $1}' > $PLAYERD
+        CURPLAY=$(cat $PLAYERD)
+    else
+        echo "No Players Available." && exit 1;
+    fi
+fi
+
+alias pctl="playerctl -p $(head -n 1 $PLAYERD)"
 
 case $1 in
+    sel) selplayer ;;
     u*) pulsemixer --change-volume +"$num" ;;
     d*) pulsemixer --change-volume -"$num" ;;
     m|mute) pulsemixer --toggle-mute ;;
@@ -18,7 +35,7 @@ case $1 in
     restart) pctl next; pctl previous ;;
     now) pctl metadata --format "{{ artist }} - {{ title }}";;
     *) cat << EOF
-actl: cli interface for PulseAudio + playerctl
+actl: cli for PulseAudio + playerctl
 Options:
     up NUM      Increase volume
     down NUM    Decrease volume

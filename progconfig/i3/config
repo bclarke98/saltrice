@@ -13,7 +13,8 @@ set $polytog --no-startup-id $HOME/.config/polybar/launch.sh
 gaps inner $igap
 gaps outer $ogap
 
-font monospace 14
+font "Roboto Mono"
+
 floating_modifier $mod
 # prevents hovering mouse over containers from changing focus
 # (clicking in a window will still swap focus)
@@ -38,7 +39,7 @@ exec --no-startup-id setwall
 exec --no-startup-id mpd
 exec --no-startup-id unclutter
 exec --no-startup-id xautolock -time 15 -locker 'lckdwn'
-exec --no-startup-id transmission-daemon
+# exec --no-startup-id transmission-daemon
 exec_always $polytog
 
 # application keybinds
@@ -68,9 +69,8 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bindsym $mod+h split h
-bindsym $mod+v split v
 bindsym $mod+t split toggle
+bindsym $mod+p exec --no-startup-id actl sel
 
 bindsym $mod+g gaps inner all set $igap; gaps outer all set $ogap; exec $polytog;
 bindsym $mod+Shift+g gaps inner all set 0; gaps outer all set 0; exec $polytog 0;

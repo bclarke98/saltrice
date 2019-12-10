@@ -1,0 +1,99 @@
+#!/usr/bin/env bash
+# Bash script to act as an abstraction for controlling window managers from
+# the command line.
+# For example, if I'm using shkhd to handle my keybinds, I would bind
+# `SUPER + q` to exec "i3-msg kill" as opposed to writing `bindsym $mod+q kill`
+# in my i3 config file. But if I wanted to swap to another window manager, I'd
+# have to redefine any i3 specific commands wherever they're used. So instead,
+# this script was born to keep all WM specific commands in a single place for
+# easier management.
+
+WM_CTL="i3-msg"
+
+if [ $WM_CTL -eq "i3-msg" ]; then
+    alias \
+        CLOSE_FOCUSED_WINDOW="$WM_CTL kill" \
+        FOCUS_WINDOW="$WM_CTL focus" \
+        MOVE_WINDOW="$WM_CTL move" \
+        FULLSCREEN="$WM_CTL fullscreen toggle" \
+        SPLIT_ORIENT="$WM_CTL split" \
+        FLOATING_MODE="$WM_CTL focus mode_toggle" \
+        TOGGLE_FLOATING="$WM_CTL floating toggle" \
+        WORKSPACE="$WM_CTL workspace" \
+        RELOAD_WM="$WM_CTL reload" \
+        RESTART_WM="$WM_CTL restart"
+
+    case $1 in
+        q) CLOSE_FOCUSED_WINDOW ;;
+        left) FOCUS_WINDOW left ;;
+        right) FOCUS_WINDOW right ;;
+        up) FOCUS_WINDOW up ;;
+        down) FOCUS_WINDOW down ;;
+        LEFT) MOVE_WINDOW left ;;
+        RIGHT) MOVE_WINDOW right ;;
+        UP) MOVE_WINDOW up ;;
+        DOWN) MOVE_WINDOW down ;;
+        f) FULLSCREEN ;;
+        t) SPLIT_ORIENT toggle;;
+        space) FLOATING_MODE ;;
+        SPACE) TOGGLE_FLOATING ;;
+        tab) WORKSPACE next ;;
+        TAB) WORKSPACE back_and_forth ;;
+        f1) RESTART_WM ;;
+        f2) RELOAD_WM ;;
+        *) cat << EOF
+    wmctl: cli for WM control
+    Usage: 'wmctl <key>'
+
+    For example, if you have 'MOD+q' set to close the focused window, you
+    would run 'wmctl q' to execute the equivalent WM-specific command.
+    If the keybind contains the SHIFT key, simply change any subsequent keys
+    to uppercase. For example, if you bound 'MOD+SHIFT+left' to 'move focused
+    container to the left', you would run 'wmctl LEFT' as opposed to 'wmctl left'
+EOF
+    esac
+else if [ $WM_CTL -eq "bspc" ]; then
+    alias \
+        CLOSE_FOCUSED_WINDOW="$WM_CTL node -k" \
+        FOCUS_WINDOW="$WM_CTL node -f" \
+        MOVE_WINDOW="$WM_CTL node -s" \
+        FULLSCREEN="$WM_CTL node -t fullscreen" \
+        SPLIT_ORIENT="$WM_CTL split" \
+        FLOATING_MODE="$WM_CTL focus mode_toggle" \
+        TOGGLE_FLOATING="$WM_CTL floating toggle" \
+        WORKSPACE="$WM_CTL desktop -f" \
+        RELOAD_WM="$WM_CTL wm -r" \
+        RESTART_WM="$WM_CTL wm -r"
+
+    case $1 in
+        q) CLOSE_FOCUSED_WINDOW ;;
+        left) FOCUS_WINDOW west ;;
+        right) FOCUS_WINDOW east ;;
+        up) FOCUS_WINDOW north ;;
+        down) FOCUS_WINDOW south ;;
+        LEFT) MOVE_WINDOW west ;;
+        RIGHT) MOVE_WINDOW east ;;
+        UP) MOVE_WINDOW north ;;
+        DOWN) MOVE_WINDOW south ;;
+        f) FULLSCREEN ;;
+        t) SPLIT_ORIENT toggle;;
+        space) FLOATING_MODE ;;
+        SPACE) TOGGLE_FLOATING ;;
+        tab) WORKSPACE next.local ;;
+        TAB) WORKSPACE last ;;
+        f1) RESTART_WM ;;
+        f2) RELOAD_WM ;;
+        *) cat << EOF
+    wmctl: cli for WM control
+    Usage: 'wmctl <key>'
+
+    For example, if you have 'MOD+q' set to close the focused window, you
+    would run 'wmctl q' to execute the equivalent WM-specific command.
+    If the keybind contains the SHIFT key, simply change any subsequent keys
+    to uppercase. For example, if you bound 'MOD+SHIFT+left' to 'move focused
+    container to the left', you would run 'wmctl LEFT' as opposed to 'wmctl left'
+EOF
+    esac
+
+fi
+

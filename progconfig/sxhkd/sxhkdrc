@@ -1,24 +1,100 @@
-# Basics
-
+# SHORTCUT: <MOD-RETURN>  Open terminal
 super + Return
     $TERMINAL
 
+# SHORTCUT: <MOD-SHIFT-RETURN>    Open dropdown terminal
+super + shift + return
+    ddspawn
+
+# SHORTCUT: <MOD-w>     Open browser
 super + w
     $BROWSER
 
+# SHORTCUT: <MOD-a>     Open pavucontrol (gui audio mixer)
 super + a
     pavucontrol
 
+# SHORTCUT: <MOD-SHIFT-a>     Open pulsemixer (cli audio mixer)
 super + shift + a
     $TERMINAL -e pulsemixer
 
+# SHORTCUT: <MOD-SHIFT-l>   Lock screen
 super + shift + l
     lckdwn
 
+# SHORTCUT: <MOD-PRINTSCREEN>   Start/Stop screen recording
 super + Print
     ffmpeg_record
 
+# SHORTCUT: <MOD-d>     Launch dmenu_run
 super + d
-    dmenu_run -l 30
+    dmenu_run -c -l 10
 
+# SHORTCUT: <MOD-q>     Close currently focused window
+super + q
+    wmctl q
 
+# SHORTCUT: <MOD-[ARROW_KEY]>  Set focus to container in ARROW_KEY direction
+super + {left,right,up,down}
+    wmctl {left,right,up,down}
+
+# SHORTCUT: <MOD-SHIFT-[ARROW_KEY]>  Move focused container in ARROW_KEY direction
+super + shift + {left,right,up,down}
+    wmctl {LEFT,RIGHT,UP,DOWN}
+
+# SHORTCUT: <MOD-f>    Focused container set to fullscreen
+super + f
+    wmctl f
+
+# SHORTCUT: <MOD-{0-9}>     Set focused workspace to {1-9}
+# SHORTCUT: <MOD-Shift-{0-9}>     Move focused container to workspace {1-9}
+# SHORTCUT: <MOD-Control-{0-9}>   Set i3metaws 'meta-workspace' to {1-9}
+# super + {_,shift +, control +} {0-9}
+#     i3metaws -{w,m,M} {0-9}
+
+super + {_, shift +} {1-9,0}
+    bspc {desktop -f,node -d} '^{1-9,10}'
+
+# SHORTCUT: <MOD-Space>     Toggle focus between tiled/floating windows
+# SHORTCUT: <MOD-SHIFT-Space>   Toggle floating mode on currently focused container
+super + {_,shift +} space
+    wmctl {space,SPACE}
+
+# SHORTCUT: <MOD-Tab>     Displays the next available workspace
+# SHORTCUT: <MOD-SHIFT-Tab>   Displays the most recently focused workspace
+super + {_,shift +} space
+    wmctl {space,SPACE}
+
+# SHORTCUT: <MOD-t>    Toggle between splits opening horizontally vs vertically
+super + t
+    wmctl t
+
+# SHORTCUT: <MOD-F1>    Restart WM
+super + F1
+    wmctl f1
+
+# SHORTCUT: <MOD-F2>    Reload WM
+super + F2
+    wmctl f2
+
+# SHORTCUT: <MOD-p>     Select audio player for playerctl
+super + p
+    actl sel
+
+XF86AudioRaiseVolume
+    actl u 10
+
+XF86AudioLowerVolume
+    actl d 10
+
+XF86AudioPlay
+    actl playpause
+
+XF86AudioStop
+    actl pause
+
+XF86AudioPrev
+    actl prev
+
+XF86AudioNext
+    actl next
