@@ -87,8 +87,9 @@ XF86AudioRaiseVolume
 XF86AudioLowerVolume
     actl d 10
 
-XF86AudioPlay
-    actl playpause
+# SHORTCUT: <MOD-XF86AudioPlay>     Select audio source's output device
+{_, super +} XF86AudioPlay
+    {actl playpause, sinswap}
 
 XF86AudioStop
     actl pause

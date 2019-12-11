@@ -3,30 +3,60 @@
 [ -z $2 ] && num="5" || num="$2"
 
 PLAYERD="$HOME/.cache/.playersel"
+SINKD="$HOME/.cache/.sinksel"
+
+if [ ! -f "$PLAYERD" ]; then
+    if [ $(playerctl -l | wc -l) -gt 0 ]; then
+        playerctl -l | tr '\n' ',' | awk -F',' '{print $1}' > $PLAYERD
+    else
+        echo "No Players Available." && exit 1;
+    fi
+fi
+
 CURPLAY=$(cat $PLAYERD)
+
+[ ! -f "$SINKD" ] && echo "0" > $SINKD
+DEFSINID=$(cat $SINKD)
+
 
 function selplayer(){
     CURPLAY=$(playerctl -l | dmenu -p "Select Player:" -c -l 10)
     [ ! -z $CURPLAY ] && echo "$CURPLAY" > $PLAYERD
 }
 
-if [ -z "$CURPLAY" ]; then
-    if [ $(playerctl -l | wc -l) -gt 0 ]; then
-        playerctl -l | tr '\n' ',' | awk -F',' '{print $1}' > $PLAYERD
-        CURPLAY=$(cat $PLAYERD)
+function selsink(){
+    SRCS=$(pactl list sinks | grep -e "Sink #" -e "Description:" |\
+        sed 's/\(Sink #\|Description: \)//g' | paste -sd ' \n')
+    if [ $(echo "$SRCS" | wc -l) -gt 1 ]; then
+        SEL=$(echo "$SRCS" | colrm 1 2 | sed 's/^[[:blank:]]*//g' |\
+            awk -F'(' '{print $1}' | dmenu -p "Select Audio Source: " -c -l 10)
     else
-        echo "No Players Available." && exit 1;
+        SEL="$SRCS"
     fi
-fi
+    SINKID=$(echo "$SRCS" | grep "$SEL" | awk '{print $1}')
+    [ -z $SINKID ] && echo "0" > $SINKD || echo "$SINKID" > $SINKD
+    DEFSINID="$SINKID"
+}
+
+# this function is for potentially adding default sink selection
+# in the future, which requires the sink name instead of ID.
+function namefromid(){
+    SINKNAME=$(pactl list sinks | grep -e "Sink #" -e "Name:" |\
+        sed 's/\(Sink #\|Name: \)//g' | paste -sd ' \n' |\
+        grep "^$DEFSINID" | awk '{print $2}')
+    echo "$SINKNAME"
+}
 
 alias pctl="playerctl -p $(head -n 1 $PLAYERD)"
 
 case $1 in
     sel) selplayer ;;
-    u*) pulsemixer --change-volume +"$num" ;;
-    d*) pulsemixer --change-volume -"$num" ;;
-    m|mute) pulsemixer --toggle-mute ;;
-    truemute) pulsemixer --mute ;;
+    src) selsink ;;
+    name) namefromid ;;
+    u*) pactl set-sink-volume $DEFSINID "+${num}%" ;;
+    d*) pactl set-sink-volume $DEFSINID "-${num}%" ;;
+    m|mute) pactl set-sink-mute $DEFSINID toggle ;;
+    truemute) pactl set-sink-mute $DEFSINID true ;;
     next)  pctl next ;;
     prev)  pctl previous ;;
     play)  pctl play ;;

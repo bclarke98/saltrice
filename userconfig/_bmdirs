@@ -2,6 +2,6 @@ t       /usr/src/st
 r       $SALTRICED
 s       $SCRIPTSD
 p       $SALTRICED/progconfig
-w       /usr/src/dwm
+c       /usr/src/
 f       $HOME/school/foundations/
 u       $SALTRICED/userconfig

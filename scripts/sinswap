@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# sinswap - an interactive PulseAudio sink input controller
+# sinswap - Easily adjust which device your audio plays on
+
+menu="dmenu -c -l 10"
 
 SINS=$(pactl list sink-inputs | grep -e "Sink Input" -e \
     "application.process.binary" -e "Sink:" | \
@@ -12,7 +14,7 @@ SRCS=$(pactl list sinks | grep -e "Sink #" -e "Description:" |\
 TARGOPTS=$(echo "$SINS" | awk '{print $3}')
 
 if [ $(echo "$TARGOPTS" | wc -l) -gt 1 ]; then
-    TARGAPP=$(echo "$TARGOPTS" | dmenu -l 10 -p "Select SIN: ")
+    TARGAPP=$(echo "$TARGOPTS" | $menu -p "Select SIN: ")
 else
     TARGAPP="$TARGOPTS"
 fi
