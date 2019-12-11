@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# sinswap - an interactive PulseAudio sink input controller
+
+SINS=$(pactl list sink-inputs | grep -e "Sink Input" -e \
+    "application.process.binary" -e "Sink:" | \
+    sed 's/\(Sink Input #\|application.process.binary \|Sink: \)//g' |\
+    cut -d'"' -f 2 | paste -sd '  \n')
+
+SRCS=$(pactl list sinks | grep -e "Sink #" -e "Description:" |\
+    sed 's/\(Sink #\|Description: \)//g' | paste -sd ' \n')
+
+TARGOPTS=$(echo "$SINS" | awk '{print $3}')
+
+if [ $(echo "$TARGOPTS" | wc -l) -gt 1 ]; then
+    TARGAPP=$(echo "$TARGOPTS" | dmenu -l 10 -p "Select SIN: ")
+else
+    TARGAPP="$TARGOPTS"
+fi
+
+[ -z $TARGAPP ] && exit
+
+SINID=$(echo "$SINS" | grep "$TARGAPP" | awk '{print $1}')
+SRCID=$(echo "$SINS" | grep "$TARGAPP" | awk '{print $2}')
+CURSWPID=$(echo "$SRCS" | awk '{print $1}' | grep "$SRCID")
+OPTS=$(echo "$SRCS" | grep "^[^$CURSWPID]")
+
+if [ $(echo "$OPTS" | wc -l) -gt 1 ]; then
+    SWPNM=$(echo "$OPTS" | colrm 1 2 | sed 's/^[[:blank:]]*//g' |\
+        awk -F'(' '{print $1}' | dmenu -l 10 -p "Select Audio Source: ")
+    [ -z "$SWPNM" ] && exit
+    OPTS=$(echo "$OPTS" | grep "$SWPNM")
+fi
+
+TARGID=$(echo "$OPTS" | awk '{print $1}')
+pactl move-sink-input $SINID $TARGID
