@@ -39,6 +39,7 @@ exec --no-startup-id setwall
 exec --no-startup-id mpd
 exec --no-startup-id unclutter
 exec --no-startup-id xautolock -time 15 -locker 'lckdwn'
+exec --no-startup-id dunst
 # exec --no-startup-id transmission-daemon
 exec_always $polytog
 

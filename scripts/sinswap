@@ -34,4 +34,9 @@ if [ $(echo "$OPTS" | wc -l) -gt 1 ]; then
 fi
 
 TARGID=$(echo "$OPTS" | awk '{print $1}')
+SINKNAME=$(echo "$SRCS" | grep "^$TARGID" | colrm 1 2 |\
+    sed 's/^[[:blank:]]*//g' | awk -F'(' '{print $1}')
+
 pactl move-sink-input $SINID $TARGID
+echo "$TARGID" > $HOME/.cache/.sinksel
+notify-send "Audio Updated:" "Playing '$TARGAPP' on $SINKNAME"

@@ -24,14 +24,19 @@ function selplayer(){
     [ ! -z $CURPLAY ] && echo "$CURPLAY" > $PLAYERD
 }
 
+# selsink is used for selecting which audio device is effected by,
+# for example, hitting XF86AudioRaiseVolume, whereas the separate
+# `sinswap` script takes an actively playing audio stream (i.e. spotify)
+# and changes which audio device it's playing on.
+# Eventually I'm probably gonna end up merging `sinswap`'s features
+# into this file and make the whole process a bit more intuitive
 function selsink(){
     SRCS=$(pactl list sinks | grep -e "Sink #" -e "Description:" |\
         sed 's/\(Sink #\|Description: \)//g' | paste -sd ' \n')
     if [ $(echo "$SRCS" | wc -l) -gt 1 ]; then
         SEL=$(echo "$SRCS" | colrm 1 2 | sed 's/^[[:blank:]]*//g' |\
             awk -F'(' '{print $1}' | dmenu -p "Select Audio Source: " -c -l 10)
-    else
-        SEL="$SRCS"
+        [ ! -z "$SEL" ] && notify-send "Audio Sink Set To:" "$SEL"
     fi
     SINKID=$(echo "$SRCS" | grep "$SEL" | awk '{print $1}')
     [ -z $SINKID ] && echo "0" > $SINKD || echo "$SINKID" > $SINKD
