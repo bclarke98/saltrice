@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+# nvidia-settings --assign CurrentMetaMode="HDMI-0: nvidia-auto-select +1680+0 {ForceFullCompositionPipeline=On}, DP-4: nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
+nvidia-settings -assign CurrentMetaMode="HDMI-0: 1920x1080_60 +0+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}, DP-4: 2560x1440_144 +1920+0 {ForceCompositionPipeline=On, ForceFullCompositionPipeline=On}"

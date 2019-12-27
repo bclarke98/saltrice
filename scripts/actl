@@ -19,7 +19,7 @@ CURPLAY=$(cat $PLAYERD)
 DEFSINID=$(cat $SINKD)
 
 
-function selplayer(){
+selplayer(){
     CURPLAY=$(playerctl -l | dmenu -p "Select Player:" -c -l 10)
     [ ! -z $CURPLAY ] && echo "$CURPLAY" > $PLAYERD
 }
@@ -30,22 +30,23 @@ function selplayer(){
 # and changes which audio device it's playing on.
 # Eventually I'm probably gonna end up merging `sinswap`'s features
 # into this file and make the whole process a bit more intuitive
-function selsink(){
+selsink(){
     SRCS=$(pactl list sinks | grep -e "Sink #" -e "Description:" |\
         sed 's/\(Sink #\|Description: \)//g' | paste -sd ' \n')
     if [ $(echo "$SRCS" | wc -l) -gt 1 ]; then
         SEL=$(echo "$SRCS" | colrm 1 2 | sed 's/^[[:blank:]]*//g' |\
-            awk -F'(' '{print $1}' | dmenu -p "Select Audio Source: " -c -l 10)
-        [ ! -z "$SEL" ] && notify-send "Audio Sink Set To:" "$SEL"
+            awk -F'(' '{print $1}' | dmenu -p "Select Default Audio Sink: " -c -l 10)
+        [ ! -z "$SEL" ] && notify-send "Default Audio Sink Set To:" "$SEL"
     fi
     SINKID=$(echo "$SRCS" | grep "$SEL" | awk '{print $1}')
     [ -z $SINKID ] && echo "0" > $SINKD || echo "$SINKID" > $SINKD
     DEFSINID="$SINKID"
+    pactl set-default-sink $(namefromid)
 }
 
 # this function is for potentially adding default sink selection
 # in the future, which requires the sink name instead of ID.
-function namefromid(){
+namefromid(){
     SINKNAME=$(pactl list sinks | grep -e "Sink #" -e "Name:" |\
         sed 's/\(Sink #\|Name: \)//g' | paste -sd ' \n' |\
         grep "^$DEFSINID" | awk '{print $2}')

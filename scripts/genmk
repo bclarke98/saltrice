@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function findobj(){
-    find . -name "*.$1" | sort | sed "s/.$1/.o/g" | sed "s/.\///g" | tr '\n' ' ';
+    find . -maxdepth 1 -name "*.$1" | sort | sed "s/.$1/.o/g" | sed "s/.\///g" | tr '\n' ' ';
 }
 
 CC="g++"

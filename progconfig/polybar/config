@@ -54,7 +54,7 @@ module-margin-right = 2
 
 font-0 = "Roboto Mono:pixelsize=10;1"
 font-1 = "siji:pixelsize=12;1"
-font-2 = "Inconsolata for Powerline:size=12;1"
+font-2 = "FuraCode Nerd Font Mono:style=medium:size12;3"
 
 modules-left = bspwm i3
 modules-center = spotify
@@ -277,8 +277,8 @@ label = %date% %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume>
-;format-volume = <label-volume> <bar-volume>
+;format-volume = <ramp-volume> <label-volume>
+format-volume = <label-volume> <bar-volume>
 label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}
 
@@ -449,5 +449,10 @@ format = <label>
 exec = echo VPN
 exec-if = pgrep -x nordvpnd && nordvpn status | grep -i 'connected'
 format-underline = #00aacc
+
+[module/dyanvol]
+type = custom/script
+interval = 1
+format-prefix = ""
 
 ; vim:ft=dosini

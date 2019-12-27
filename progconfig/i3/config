@@ -30,7 +30,7 @@ for_window [instance="dropdown_*"] floating enable
 for_window [instance="dropdown_*"] move scratchpad
 for_window [instance="dropdown_*"] sticky enable
 for_window [instance="dropdown_*"] scratchpad show
-for_window [instance="dropdown_term"] resize set 800 500
+for_window [instance="dropdown_term"] resize set 1000 600
 for_window [instance="dropdown_*"] move position center
 
 # startup
@@ -40,6 +40,7 @@ exec --no-startup-id mpd
 exec --no-startup-id unclutter
 exec --no-startup-id xautolock -time 15 -locker 'lckdwn'
 exec --no-startup-id dunst
+exec --no-startup-id nm-applet
 # exec --no-startup-id transmission-daemon
 exec_always $polytog
 
@@ -74,6 +75,7 @@ bindsym $mod+t split toggle
 
 bindsym $mod+p exec --no-startup-id actl src
 bindsym $mod+Shift+p exec --no-startup-id actl sel
+bindsym $mod+Control+p exec --no-startup-id sinswap
 
 bindsym $mod+g gaps inner all set $igap; gaps outer all set $ogap; exec $polytog;
 bindsym $mod+Shift+g gaps inner all set 0; gaps outer all set 0; exec $polytog 0;
@@ -128,8 +130,8 @@ bindsym $mod+Control+8 exec --no-startup-id i3metaws -M $ws8
 bindsym $mod+Control+9 exec --no-startup-id i3metaws -M $ws9
 bindsym $mod+Control+0 exec --no-startup-id i3metaws -M $ws10
 
-exec --no-startup-id i3-msg 'workspace 2' && i3metaws -w $ws10 \
-&& i3-msg 'workspace 1' && i3metaws -w $ws1
+exec --no-startup-id i3-msg 'workspace 2' && i3metaws -w $ws1 \
+&& i3-msg 'workspace 1' && i3metaws -w $ws10
 
 # workspace keybinds
 bindsym $mod+Tab workspace next

@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+pgrep -x transmission-da >/dev/null || (transmission-daemon --auto --username arch --password linux --port 9091 --allowed "127.0.0.1" && notify-send "Starting transmission daemon...")
+transmission-remote -a "$@" && notify-send "Transmission-Daemon:" "Torrent Added: ($@)"

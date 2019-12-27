@@ -52,6 +52,7 @@ lfcd(){
 
 bindkey -s '^o' 'lfcd\n'
 bindkey -s '^f' 'cse\n'
+bindkey -s '^[.' 'cd ..\n'
 
 
 autoload edit-command-line; zle -N edit-command-line
@@ -68,6 +69,6 @@ bindkey -v '^[[1;5D' vi-backward-word
 PLUGIND="/usr/share/zsh/plugins"
 
 source $PLUGIND/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-# source $PLUGIND/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+source $PLUGIND/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 # source $PLUGIND/zsh-gitfast/gitfast.plugin.zsh
 # source $PLUGIND/zsh-agnoster-theme/agnoster.zsh-theme

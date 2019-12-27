@@ -126,6 +126,9 @@ inoremap ,eps ε
 inoremap ,del δ
 inoremap ,cir ∘
 inoremap ,cup ∪
+inoremap ,mem ∈
+inoremap ,nil ∅
+inoremap ,sig Σ
 
 " LaTeX
 autocmd FileType tex inoremap ,pp \paragraph{}<Enter><++><Esc>kf}i

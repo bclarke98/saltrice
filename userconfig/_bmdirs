@@ -1,4 +1,4 @@
-t       /usr/src/st
+t       /usr/src/salt
 r       $SALTRICED
 s       $SCRIPTSD
 p       $SALTRICED/progconfig
