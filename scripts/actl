@@ -6,11 +6,9 @@ PLAYERD="$HOME/.cache/.playersel"
 SINKD="$HOME/.cache/.sinksel"
 
 if [ ! -f "$PLAYERD" ]; then
-    if [ $(playerctl -l | wc -l) -gt 0 ]; then
-        playerctl -l | tr '\n' ',' | awk -F',' '{print $1}' > $PLAYERD
-    else
-        echo "No Players Available." && exit 1;
-    fi
+    [ $(playerctl -l | wc -l) -gt 0 ] && \
+        (playerctl -l | tr '\n' ',' | awk -F',' '{print $1}' > $PLAYERD) ||\
+        (echo "No Players Available." && exit 1;)
 fi
 
 CURPLAY=$(cat $PLAYERD)

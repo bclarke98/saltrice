@@ -26,18 +26,20 @@ foreground-alt = #555
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
+transparent = #00
 
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 24
+height = 28
 ;height = 32
 ;offset-x = 1%
 ;offset-y = 1%
-radius = 10.0
+radius = 0
 fixed-center = false
 
-background = ${colors.background}
+;background = ${colors.background}
+background = ${colors.transparent}
 foreground = ${colors.foreground}
 
 line-size = 3
@@ -52,14 +54,16 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = "Roboto Mono:pixelsize=10;1"
+font-0 = "Terminus:pixelsize=12:style=bold;1"
 font-1 = "siji:pixelsize=12;1"
-font-2 = "FuraCode Nerd Font Mono:style=medium:size12;3"
+font-2 = "Symbola:pixelsize=14;1"
+;font-2 = "Symbola:pixelsize=14;1"
+font-3 = "FuraCode Nerd Font Mono:style=medium:size12;3"
+;font-4 = "Noto Color Emoji:scale=10:style=Regular;2"
 
-modules-left = bspwm i3
+modules-left = i3
 modules-center = spotify
-; modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
-modules-right = recording filesystem pulseaudio memory cpu eth nordic date powermenu
+modules-right = recording filesystem pulseaudio memory cpu eth date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -82,22 +86,6 @@ cursor-scroll = ns-resize
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
-
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
-
-label-layout = %layout%
-label-layout-underline = ${colors.secondary}
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
 
 [module/filesystem]
 type = internal/fs
@@ -173,11 +161,11 @@ label-urgent-padding = 2
 type = internal/mpd
 format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
 
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
+icon-prev = ⏮
+icon-stop = ⏹
+icon-play = ▶️
+icon-pause = ⏸
+icon-next = ⏭
 
 label-song-maxlen = 25
 label-song-ellipsis = true
@@ -186,8 +174,7 @@ label-song-ellipsis = true
 type = internal/xbacklight
 
 format = <label> <bar>
-label = BL
-
+label = ﯧ
 bar-width = 10
 bar-indicator = |
 bar-indicator-foreground = #fff
@@ -207,7 +194,7 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format-prefix = "♨️"
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f90000
 label = %percentage:2%%
@@ -215,7 +202,7 @@ label = %percentage:2%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format-prefix = "🧠 "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
 label = %percentage_used%%
@@ -248,7 +235,7 @@ interface = enp24s0
 interval = 3.0
 
 format-connected-underline = #55aa55
-format-connected-prefix = " "
+format-connected-prefix = "📡 "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
@@ -268,7 +255,7 @@ date-alt = " %Y-%m-%d"
 time = %I:%M
 time-alt = %I:%M:%S
 
-format-prefix = 
+format-prefix = 🕒
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #0a6cf5
 
@@ -282,7 +269,7 @@ format-volume = <label-volume> <bar-volume>
 label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}
 
-label-muted =  Muted
+label-muted = 🔇 Muted
 label-muted-foreground = #666
 
 bar-volume-width = 10
@@ -293,35 +280,7 @@ bar-volume-foreground-3 = #55aa55
 bar-volume-foreground-4 = #55aa55
 bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
-
-[module/alsa]
-type = internal/alsa
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL
-label-volume-foreground = ${root.foreground}
-
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
+bar-volume-gradient = true
 bar-volume-indicator = |
 bar-volume-indicator-font = 2
 bar-volume-fill = ─
@@ -363,25 +322,6 @@ animation-discharging-2 = 
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
 
-[module/temperature]
-type = internal/temperature
-thermal-zone = 0
-warn-temperature = 60
-
-format = <ramp> <label>
-format-underline = #f50a4d
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
-
-label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
-
 [module/powermenu]
 type = custom/menu
 
@@ -389,16 +329,16 @@ expand-right = true
 
 format-spacing = 1
 
-label-open = 
+label-open = "⏼"
 label-open-foreground = ${colors.secondary}
-label-close =  cancel
+label-close = "🗙"
 label-close-foreground = ${colors.secondary}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
-menu-0-0 = reboot
+menu-0-0 = "🔄"
 menu-0-0-exec = menu-open-1
-menu-0-1 = power off
+menu-0-1 = "⏻"
 menu-0-1-exec = menu-open-2
 
 menu-1-0 = cancel
@@ -420,39 +360,24 @@ screenchange-reload = true
 ;pseudo-transparency = false
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-top = 6
+margin-bottom = 6
 
 [module/spotify]
 type = custom/script
 interval = 1
-format-prefix = " "
+format-prefix = " 🔊 "
 format = <label>
 exec = actl now
-;exec = python /home/salty/.config/polybar/spotify_status.py -f '{artist}: {song}'
 format_underline = #1db954
 
 [module/recording]
 type = custom/script
 interval = 1
-format-prefix = " "
+format-prefix = "⏺ "
 format = <label>
 exec = echo REC
 exec-if = pgrep -x ffmpeg
 format-underline = #f90000
-
-[module/nordic]
-type = custom/script
-interval = 1
-format-prefix = "± "
-format = <label>
-exec = echo VPN
-exec-if = pgrep -x nordvpnd && nordvpn status | grep -i 'connected'
-format-underline = #00aacc
-
-[module/dyanvol]
-type = custom/script
-interval = 1
-format-prefix = ""
 
 ; vim:ft=dosini
