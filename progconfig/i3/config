@@ -130,8 +130,8 @@ bindsym $mod+Control+8 exec --no-startup-id i3metaws -M $ws8
 bindsym $mod+Control+9 exec --no-startup-id i3metaws -M $ws9
 bindsym $mod+Control+0 exec --no-startup-id i3metaws -M $ws10
 
-exec --no-startup-id i3-msg 'workspace 2' && i3metaws -w $ws1 \
-&& i3-msg 'workspace 1' && i3metaws -w $ws10
+exec --no-startup-id i3metaws -w $ws1 && i3-msg 'workspace 2' \
+&& i3metaws -w $ws10 && i3metaws -w $ws1
 
 # workspace keybinds
 bindsym $mod+Tab workspace next
