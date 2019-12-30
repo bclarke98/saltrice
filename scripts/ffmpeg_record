@@ -3,7 +3,7 @@ function chkrec() {
     pgrep -x ffmpeg && pkill -x ffmpeg && exit;
 }
 chkrec 2>&1 >/dev/null
-fname="$HOME/Videos/$(date +"%F_%T" | sed 's/-//g' | sed 's/://g')"
+fname="$HOME/vid/$(date +"%F_%T" | sed 's/-//g' | sed 's/://g')"
 [ ! -z $1 ] && fname=$1;
 offset=$(xrandr --query | awk '!/primary/ && / connected/' | awk '{print $3}' | awk -F'x' '{print $1}')
 ffmpeg -f x11grab -video_size 1920x1080 -framerate 30 -draw_mouse 0 -i $DISPLAY.0+$offset,0 -f pulse -i default -c:v libx264 -preset ultrafast -c:a aac $fname.mp4 > $HOME/Videos/output.log 2>&1 < /dev/null &

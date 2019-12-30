@@ -66,9 +66,13 @@ bindkey -M vicmd '^[[1;5D' vi-backward-word
 bindkey -v '^[[1;5C' vi-forward-word
 bindkey -v '^[[1;5D' vi-backward-word
 
+
 PLUGIND="/usr/share/zsh/plugins"
 
 source $PLUGIND/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source $PLUGIND/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+
+# powerline-daemon -q
+# source /usr/lib/python3.8/site-packages/powerline/bindings/zsh/powerline.zsh 2>/dev/null
 # source $PLUGIND/zsh-gitfast/gitfast.plugin.zsh
 # source $PLUGIND/zsh-agnoster-theme/agnoster.zsh-theme

@@ -1,8 +1,9 @@
-userconfig/_bashrc        .bashrc
-userconfig/_profile       .bash_profile
-userconfig/_profile       .zprofile
-userconfig/_profile       .profile
 progconfig                .config
 progconfig/nvim/init.vim  .vimrc
 userconfig/_aliasrc       .config/aliasrc
+userconfig/_bashrc        .bashrc
+userconfig/_profile       .bash_profile
+userconfig/_profile       .profile
+userconfig/_profile       .config/zsh/.zprofile
 userconfig/_xinitrc       .xinitrc
+userconfig/_xres          .Xresources

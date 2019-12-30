@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+SEL="$(xclip -sel clip -o 2>/dev/null ||\
+    (notify-send "mpvclip" "[Error]: Empty Clipboard" && exit))"
+(echo "$SEL" | grep 'http' >/dev/null) ||\
+    (notify-send "Invalid url: " "[$SEL]" && exit) &&\
+    ((mpv "$SEL" >/dev/null 2>&1) & disown)

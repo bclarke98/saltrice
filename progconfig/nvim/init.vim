@@ -17,11 +17,14 @@ set mouse=a
 set nohlsearch
 set clipboard=unnamedplus
 colorscheme nord
-
 syntax on
 filetype plugin on
 set number relativenumber
 set wildmode=longest,list,full
+
+let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v'])
+let g:airline_powerline_fonts = 1
+
 
 set shell=zsh\ -i
 "set shell=/bin/bash\ --rcfile\ ~/.profile
@@ -72,6 +75,11 @@ map <C-l> <C-w>l
 nmap <C-s> :w<CR>
 imap <C-s> <Esc>:w<CR>a
 vmap <C-s> <Esc>:w<CR>
+
+" SHORTCUT: <CTRL-a>    Toggle NerdTree
+nmap <C-a> :NERDTreeToggle<CR>
+imap <C-a> <ESC>:NERDTreeToggle<CR>
+vmap <C-a> <ESC>:NERDTreeToggle<CR>
 
 " change autocomplete to CTRL-Space
 " SHORTCUT: <CTRL-Space>    autocomplete
