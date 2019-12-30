@@ -9,20 +9,20 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
 Plug 'vifm/vifm.vim'
+Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
-set bg=light
 set go=a
 set mouse=a
 set nohlsearch
 set clipboard=unnamedplus
+colorscheme nord
 
 syntax on
 filetype plugin on
 set number relativenumber
 set wildmode=longest,list,full
 
-"let $BASH_ENV = "$SALTRICED/userconfig/_aliasrc"
 set shell=zsh\ -i
 "set shell=/bin/bash\ --rcfile\ ~/.profile
 
