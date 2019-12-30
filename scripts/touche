@@ -12,23 +12,24 @@ function helpmsg(){
 function mk_file(){
     case "$1" in
             cpp)
-                printf "#include <iostream>\n\nint main(int argc, char* argv[]){\n\t\n\treturn 0;\n}\n"
+                OUTPUT="#include <iostream>\n\nusing namespace std;\n\nint \
+                    main(int argc, char* argv[]){\n\t\n\treturn 0;\n}\n"
                 break
                 ;;
             c)
-                printf "#include <stdio.h>\n\nint main(int argc, char* argv[]){\n\t\n\treturn 0;\n}\n"
+                OUTPUT="#include <stdio.h>\n\nint main(int argc, char* argv[]){\n\t\n\treturn 0;\n}\n"
                 break
                 ;;
             sh)
-                printf "#!/usr/bin/env sh\n"
+                OUTPUT="#!/usr/bin/env sh\n"
                 break
                 ;;
             py)
-                printf "#!/usr/bin/env python3\n"
+                OUTPUT="#!/usr/bin/env python3\n"
                 break
                 ;;
             *)
-                printf "#!/usr/bin/env %s" $1
+                OUTPUT="#!/usr/bin/env $1\n"
                 break
                 ;;
     esac
@@ -42,10 +43,21 @@ while test $# -gt 0; do
             -f|--filetype)
                 shift
                 mk_file $1
-                break
+                shift
+                ;;
+            -o|--output)
+                shift
+                TARG="$1"
+                shift
                 ;;
             *)
                 helpmsg
                 ;;
-        esac
+    esac
 done
+
+if [ ! -z "$TARG" ]; then
+    echo -e "$OUTPUT" > $TARG && chmod +x $TARG
+else
+    echo -e "$OUTPUT"
+fi

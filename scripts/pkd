@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+sudo pacman -Qeq | dmenu -p "Select Package:" -c -l 20 | xargs -r -n 1 sudo pacman -Qii
