@@ -4,6 +4,7 @@ for_window [class="^,*"] border pixel 2
 set $igap 8
 set $ogap 6
 set $mod Mod4
+set $ALT Mod1
 set $term --no-startup-id $TERMINAL
 set $browser --no-startup-id $BROWSER
 set $netrefresh --no-startup-id sudo -A systemctl restart NetworkManager
@@ -85,6 +86,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+Shift+space floating toggle
 
 bindsym $mod+m exec --no-startup-id spotify
+bindsym $mod+Shift+w --no-startup-id wikispawn
 
 set $ws1 "1"
 set $ws2 "2"

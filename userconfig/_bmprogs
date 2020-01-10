@@ -21,7 +21,7 @@ smi         sudo make -j$(nproc) install
 spi         ssh pi@10.0.0.69
 sus         ssh salty@10.0.0.10
 scs         ssh bclarke@mercury.cs.uml.edu
-ssm         ssh salty@104.248.52.201
+ssm         ssh b@mail.d3x.me
 srec        ffmpeg_record
 swpi        ssh pi@10.0.0.49
 rlbm        sh $SALTRICED/userconfig/_loadbm && source $HOME/.profile

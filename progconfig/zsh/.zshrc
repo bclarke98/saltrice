@@ -50,10 +50,13 @@ lfcd(){
     fi
 }
 
-bindkey -s '^o' 'lfcd\n'
-bindkey -s '^f' 'cse\n'
-bindkey -s '^[.' 'cd ..\n'
-
+bindkey -s '^o'       'lfcd\n'
+bindkey -s '^f'       'cse\n'
+bindkey -s '^[.'      'cd ..\n'
+# this one looks scary, but it just binds CTRL-UP to
+# format the previous command(s) in the format of
+# printf "echo '%s' >> " $HISTORYCMD[n]
+bindkey -s '^[[1;5A'  "^[[A' ^[Iecho '^[A>> "
 
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line

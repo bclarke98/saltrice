@@ -1,2 +1,2 @@
 #!/bin/bash
-find $HOME/pdfs -name "*.pdf" | fzf | xargs -r zathura --fork
+find $HOME/pdfs -name "*.pdf" | dmenu -c -l 10 | xargs -r zathura --fork

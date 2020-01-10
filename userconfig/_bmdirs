@@ -2,6 +2,7 @@ t       /usr/src/salt
 r       $SALTRICED
 s       $SCRIPTSD
 p       $SALTRICED/progconfig
-c       /usr/src/
-f       $HOME/school/foundations/
+c       /usr/src
+f       $HOME/school/foundations
 u       $SALTRICED/userconfig
+m       /mnt/d3vshare

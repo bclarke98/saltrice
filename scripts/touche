@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-FTYPES="c,cpp,sh,py"
+FTYPES="c,h,cpp,sh,py"
 
 function helpmsg(){
     echo "Format: $0 -f [filetype]"
@@ -20,16 +20,23 @@ function mk_file(){
                 OUTPUT="#include <stdio.h>\n\nint main(int argc, char* argv[]){\n\t\n\treturn 0;\n}\n"
                 break
                 ;;
-            sh)
-                OUTPUT="#!/usr/bin/env sh\n"
+            h)
+                if [ -z "$TARG" ]; then
+                    OUTPUT="#ifndef <++>\n#define <++>\n\n\n#endif\n"
+                else
+                    UTARG=$(echo "$TARG" | awk '{print toupper($0)}' | tr '.' '_')
+                    OUTPUT="#ifndef ${UTARG}\n#define ${UTARG}\n\n<++>\n\n#endif\n"
+                fi
                 break
                 ;;
             py)
                 OUTPUT="#!/usr/bin/env python3\n"
+                CHMOD="1"
                 break
                 ;;
             *)
                 OUTPUT="#!/usr/bin/env $1\n"
+                CHMOD="1"
                 break
                 ;;
     esac
@@ -42,7 +49,7 @@ while test $# -gt 0; do
                 ;;
             -f|--filetype)
                 shift
-                mk_file $1
+                FILETYPE="$1"
                 shift
                 ;;
             -o|--output)
@@ -56,8 +63,10 @@ while test $# -gt 0; do
     esac
 done
 
+mk_file $FILETYPE
 if [ ! -z "$TARG" ]; then
-    echo -e "$OUTPUT" > $TARG && chmod +x $TARG
+    echo -e "$OUTPUT" > $TARG
+    [ ! -z "$CHMOD" ] && chmod +x $TARG
 else
     echo -e "$OUTPUT"
 fi
