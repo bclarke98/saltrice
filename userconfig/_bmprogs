@@ -18,8 +18,9 @@ cse         source cdtomyshit
 cmf         genmk
 vim         $EDITOR
 smi         sudo make -j$(nproc) install
-spi         ssh pi@10.0.0.69
-sus         ssh salty@10.0.0.10
+swi         ssh pi@10.0.1.4
+spi         ssh pi@10.0.1.2
+sus         ssh salty@10.0.1.1
 scs         ssh bclarke@mercury.cs.uml.edu
 ssm         ssh b@mail.d3x.me
 srec        ffmpeg_record

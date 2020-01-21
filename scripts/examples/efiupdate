@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+cp -a /boot/vmlinuz-linux /efi/EFI/arch
+cp -a /boot/initramfs-linux.img /efi/EFI/arch
+cp -a /boot/initramfs-linux-fallback.img /efi/EFI/arch
+bootctl update
+echo "[$(date)]: Updated EFI settings." >> /home/salty/.efistatus
