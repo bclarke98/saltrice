@@ -1,7 +1,7 @@
 #!/bin/sh
 export EDITOR="nvim"
 export TERMINAL="st"
-export FILE="ranger"
+export FILE="lf"
 export BROWSER="google-chrome-stable"
 export VIEWER="sxiv"
 

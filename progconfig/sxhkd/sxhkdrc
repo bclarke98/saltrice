@@ -46,14 +46,30 @@ super + shift + {left,right,up,down}
 super + f
     wmctl f
 
+# SHORTCUT: <MOD-g>    Set gaps to default value (8px)
+super + g
+    i3-msg "gaps inner all set 8; exec --no-startup-id $CONFIGD/polybar/launch.sh"
+
+# SHORTCUT: <MOD-SHIFT-g>    Disable gaps
+super + shift + g
+    i3-msg "gaps inner all set 0; exec --no-startup-id $CONFIGD/polybar/launch.sh"
+
+# SHORTCUT: <MOD-m>     Launch spotify
+super + m
+    spotify
+
+# SHORTCUT: <MOD-SHIFT-m>   Launch neomutt
+super + shift + m
+    $TERMINAL -e "neomutt"
+
 # SHORTCUT: <MOD-{0-9}>     Set focused workspace to {1-9}
 # SHORTCUT: <MOD-Shift-{0-9}>     Move focused container to workspace {1-9}
 # SHORTCUT: <MOD-Control-{0-9}>   Set i3metaws 'meta-workspace' to {1-9}
-# super + {_,shift +, control +} {0-9}
-#     i3metaws -{w,m,M} {0-9}
+super + {_,shift +, control +} {0-9}
+    i3metaws -{w,m,M} {0-9}
 
-super + {_, shift +} {1-9,0}
-    bspc {desktop -f,node -d} '^{1-9,10}'
+# super + {_, shift +} {1-9,0}
+#     bspc {desktop -f,node -d} '^{1-9,10}'
 
 # SHORTCUT: <MOD-Space>     Toggle focus between tiled/floating windows
 # SHORTCUT: <MOD-SHIFT-Space>   Toggle floating mode on currently focused container
@@ -68,6 +84,12 @@ super + {_,shift +} space
 # SHORTCUT: <MOD-t>    Toggle between splits opening horizontally vs vertically
 super + t
     wmctl t
+
+# SHORTCUT: <MOD-p>             change default audio source
+# SHORTCUT: <MOD-SHIFT-p>       change selected audio player
+# SHORTCUT: <MOD-Control-p>     change source current player outputs to
+super + {_,shift +,control +} p
+    actl {src,sel,sinswap}
 
 # SHORTCUT: <MOD-F1>    Restart WM
 super + F1

@@ -48,8 +48,8 @@ exec_always $polytog
 # application keybinds
 bindsym $mod+w          exec $browser
 bindsym $mod+r          exec $term -e $FILE
-bindsym $mod+a          exec $term -e pulsemixer
-bindsym $mod+Shift+a    exec pavucontrol
+bindsym $mod+Shift+a    exec $term -e pulsemixer
+bindsym $mod++a         exec pavucontrol
 
 bindsym $mod+l          exec lckdwn
 bindsym $mod+Print      exec --no-startup-id ffmpeg_record
@@ -86,7 +86,9 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+Shift+space floating toggle
 
 bindsym $mod+m exec --no-startup-id spotify
-bindsym $mod+Shift+w --no-startup-id wikispawn
+bindsym $mod+Shift+m exec $term -e neomutt
+
+# bindsym $mod+Shift+w --no-startup-id wikispawn
 
 set $ws1 "1"
 set $ws2 "2"

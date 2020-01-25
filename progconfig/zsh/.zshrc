@@ -49,6 +49,8 @@ lfcd(){
         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
     fi
 }
+# fix backspace bug when switching between vim modes
+bindkey '^?' backward-delete-char
 
 bindkey -s '^o'       'lfcd\n'
 bindkey -s '^f'       'cse\n'
@@ -74,6 +76,7 @@ PLUGIND="/usr/share/zsh/plugins"
 
 source $PLUGIND/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source $PLUGIND/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+source $PLUGIND/zsh-expand-aliases/zsh-expand-aliases.zsh 2>/dev/null
 
 # powerline-daemon -q
 # source /usr/lib/python3.8/site-packages/powerline/bindings/zsh/powerline.zsh 2>/dev/null
