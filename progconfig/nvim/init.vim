@@ -145,7 +145,7 @@ autocmd FileType tex inoremap ,sse \subsection{}<Enter><++><Esc>kf}i
 autocmd FileType tex inoremap ,sss \subsubsection{}<Enter><++><Esc>kf}i
 autocmd FileType tex inoremap ,eq \begin{equation*}<Enter><++><Enter>\end{equation*}<Esc>2kf}i
 autocmd FileType tex inoremap ,neq \begin{equation}<Enter><++><Enter>\end{equation}<Esc>2kf}i
-autocmd FileType tex inoremap ,al \begin{align*}<Enter><++><Enter>\end{align*}<Esc>2kf}i
-autocmd FileType tex inoremap ,nal \begin{align}<Enter><++><Enter>\end{align}<Esc>2kf}i
+autocmd FileType tex inoremap ,al \begin{align*}<Enter><++><Enter>\end{align*}<Enter><Esc>3kf}i
+autocmd FileType tex inoremap ,nal \begin{align}<Enter><++><Enter>\end{align}<Enter><Esc>3kf}i
 autocmd FileType tex inoremap ,ma \left[\begin{matrix}<Enter><++><Enter>\end{matrix}\right]<Esc>2kf}i
 

@@ -85,7 +85,8 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+space focus mode_toggle
 bindsym $mod+Shift+space floating toggle
 
-bindsym $mod+m exec --no-startup-id spotify
+#bindsym $mod+m exec --no-startup-id spotify
+bindsym $mod+m exec $term -e spt
 bindsym $mod+Shift+m exec $term -e neomutt
 
 # bindsym $mod+Shift+w --no-startup-id wikispawn
