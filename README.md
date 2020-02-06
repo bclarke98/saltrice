@@ -8,7 +8,7 @@ These are the dotfiles that I'm currently using on my Arch Linux install, howeve
 | WM       	| i3-gaps          	|
 | Shell    	| zsh              	|
 | Editor   	| neovim           	|
-| Terminal 	| [salt - my patched build of st](https://git.d3x.me/salt) |
+| Terminal 	| [my patched build of st](https://git.d3x.me/salt) |
 
 ## Device(s)
 ```
