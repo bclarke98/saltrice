@@ -1,6 +1,6 @@
 # SaltRice - Salty's Dotfiles
 
-These are the dotfiles that I'm currently using on my Arch Linux install, however they should be mostly distro-independent. They're deployed by my [EZ-Arch installer script](https://github.com/bclarke98/ez_arch)
+These are the dotfiles that I'm currently using on my Arch Linux install, however they should be mostly distro-independent.
 
 | Config   	| Setup            	|
 |----------	|------------------	|
