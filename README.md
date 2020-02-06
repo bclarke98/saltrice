@@ -1,6 +1,6 @@
 # SaltRice - Salty's Dotfiles
 
-These are the dotfiles that I'm currently using on my Arch Linux install, however they should be mostly distro-independent. They're deployed by my [EZ-Arch installer script](https://github.com/bclarke98/ez_arch)
+These are the dotfiles that I'm currently using on my Arch Linux install, however they should be mostly distro-independent.
 
 | Config   	| Setup            	|
 |----------	|------------------	|
@@ -8,7 +8,7 @@ These are the dotfiles that I'm currently using on my Arch Linux install, howeve
 | WM       	| i3-gaps          	|
 | Shell    	| zsh              	|
 | Editor   	| neovim           	|
-| Terminal 	| [salt](https://git.d3x.me/salt) |
+| Terminal 	| [salt - my patched build of st](https://git.d3x.me/salt) |
 
 ## Device(s)
 ```
