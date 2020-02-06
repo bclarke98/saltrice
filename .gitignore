@@ -12,5 +12,6 @@ progconfig/gcloud/*
 progconfig/Trolltech.conf
 progconfig/i3/.meta_ws
 progconfig/zsh/.zcompdump
+scripts/mntshare
 */*tags
 *.pyc
