@@ -34,6 +34,12 @@ for_window [instance="dropdown_*"] scratchpad show
 for_window [instance="dropdown_term"] resize set 1000 600
 for_window [instance="dropdown_*"] move position center
 
+for_window [instance="dropdown_surf"] floating enable
+for_window [instance="dropdown_surf"] move scratchpad
+for_window [instance="dropdown_surf"] sticky enable
+for_window [instance="dropdown_surf"] scratchpad show
+for_window [instance="dropdown_surf"] move position center
+
 # startup
 exec --no-startup-id xcompmgr
 exec --no-startup-id setwall
@@ -73,6 +79,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 bindsym $mod+t split toggle
+bindsym $mod+Shift+t exec --no-startup-id surfsms
 
 bindsym $mod+p exec --no-startup-id actl src
 bindsym $mod+Shift+p exec --no-startup-id actl sel
