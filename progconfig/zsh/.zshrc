@@ -55,6 +55,7 @@ bindkey '^?' backward-delete-char
 bindkey -s '^o'       'lfcd\n'
 bindkey -s '^f'       'cse\n'
 bindkey -s '^[.'      'cd ..\n'
+bindkey -s '^P'       'pdfd\n'
 # this one looks scary, but it just binds CTRL-UP to
 # format the previous command(s) in the format of
 # printf "echo '%s' >> " $HISTORYCMD[n]

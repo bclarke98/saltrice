@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+targs="$(find . -name '*.pdf')"
+[ -z "$targs" ] && exit 1
+if [ $(echo "$targs" | wc -l) -gt 1 ]; then
+    echo "$targs" | sort | fzf -e | xargs -r -n 1 zathura --fork
+else
+    zathura --fork "$targs"
+fi
