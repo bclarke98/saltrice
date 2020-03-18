@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function findobj(){
-    find . -maxdepth 1 -name "*.$1" | sort | sed "s/.$1/.o/g" | sed "s/.\///g" | tr '\n' ' ';
+    find . -maxdepth 1 -name "*.$1" | sort | sed "s/\.$1/\.o/g" | sed "s/.\///g" | tr '\n' ' ';
 }
 
 CC="g++"
@@ -65,9 +65,9 @@ while test $# -gt 0; do
 done
 
 echo "CC =  $CC"
-echo "CFLAGS =  $CFLAGS"
-echo "MAIN =  $MAIN"
-echo "OBJECTS =  $OBJECTS"
+echo "CFLAGS = $CFLAGS"
+echo "MAIN = $MAIN"
+echo "OBJECTS = \$(MAIN) $OBJECTS"
 echo "EXE =  $EXE"
 echo "LIBS =  $LIBS"
 echo '$(EXE): $(OBJECTS)'

@@ -67,7 +67,7 @@ case $1 in
     pause) playerctl --all-players pause ;;
     playpause) pctl play-pause ;;
     restart) pctl next; pctl previous ;;
-    now) pctl metadata --format "{{ artist }} - {{ title }}";;
+    now) playerctl metadata --format "{{ artist }} - {{ title }}" 2>&1 | grep -vi 'no player';;
     *) cat << EOF
 actl: cli for PulseAudio + playerctl
 Options:

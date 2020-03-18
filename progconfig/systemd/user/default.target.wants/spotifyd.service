@@ -1,1 +1,1 @@
-/usr/lib/systemd/user/spotifyd.service
+/etc/systemd/user/spotifyd.service
