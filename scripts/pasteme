@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+[ -z "$1" ] && echo "No file specified." && exit 1
+[ ! -f "$1" ] && echo "$0: [$1] No such file or directory." && exit 1
+API_KEY="$(cat /usr/src/pastebin_api_key)"
+[ -z "$API_KEY" ] && echo "No API Key specified." && exit 1
+CONTENT="$(cat $1)"
+# CONTENT="$@"
+curl -X POST https://pastebin.com/api/api_post.php -d api_option=paste -d api_dev_key=$API_KEY --data-urlencode "api_paste_code=$CONTENT" && echo
