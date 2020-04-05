@@ -112,7 +112,7 @@ inoremap <M-R> :%s/\<<C-r><C-w>\>//g<Left><Left>
 " SHORTCUT: <F12>   compiles/runs current file depending on filetype
 autocmd FileType sh map <F12> :!% <Enter>
 autocmd FileType python map <F12> :!python3 %<Enter>
-autocmd FileType tex map <F12> :!pdflatex %<Enter>
+autocmd FileType tex map <F12> :w<Enter>:!pdflatex %<Enter>
 autocmd FileType tex map <F5> :!pdflatex -synctex=1 -interaction=nonstopmode --shell-escape %<Enter>
 
 autocmd FileType c,cpp,h,hpp map <F5> :!mc && m<Enter>
@@ -148,6 +148,7 @@ autocmd FileType tex inoremap ,t \text{<++>}<++><Esc>F{ci{
 autocmd FileType tex inoremap ,eq \begin{equation*}<Enter><++><Enter>\end{equation*}<Esc>2kf}i
 autocmd FileType tex inoremap ,neq \begin{equation}<Enter><++><Enter>\end{equation}<Esc>2kf}i
 autocmd FileType tex inoremap ,al \begin{align*}<Enter><++><Enter>\end{align*}<Enter><Esc>3kf}i
+autocmd FileType tex inoremap ,ce \begin{center}<Enter><++><Enter>\end{center}<Enter><Esc>3kf}i
 autocmd FileType tex inoremap ,nal \begin{align}<Enter><++><Enter>\end{align}<Enter><Esc>3kf}i
 autocmd FileType tex inoremap ,ma \left[\begin{matrix}<Enter><++><Enter>\end{matrix}\right]<Esc>2kf}i
 

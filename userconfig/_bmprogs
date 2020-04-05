@@ -23,6 +23,7 @@ spi         ssh pi@10.0.1.2
 sus         ssh salty@10.0.1.1
 scs         ssh bclarke@mercury.cs.uml.edu
 ssm         ssh b@mail.d3x.me
+imo         $VIEWER
 srec        ffmpeg_record
 swpi        ssh pi@10.0.0.49
 pdf         zathura --fork

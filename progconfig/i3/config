@@ -45,9 +45,10 @@ exec --no-startup-id xcompmgr
 exec --no-startup-id setwall
 exec --no-startup-id mpd
 exec --no-startup-id unclutter
-exec --no-startup-id xautolock -time 15 -locker 'lckdwn'
+exec --no-startup-id xautolock -time 5 -locker 'lckdwn'
 exec --no-startup-id dunst
 exec --no-startup-id nm-applet
+exec --no-startup-id echo "" > /home/salty/.cache/.cursong
 # exec --no-startup-id transmission-daemon
 exec_always $polytog
 
@@ -55,7 +56,7 @@ exec_always $polytog
 bindsym $mod+w          exec $browser
 bindsym $mod+r          exec $term -e $FILE
 bindsym $mod+Shift+a    exec $term -e pulsemixer
-bindsym $mod++a         exec pavucontrol
+bindsym $mod+a          exec pavucontrol
 
 bindsym $mod+l          exec lckdwn
 bindsym $mod+Print      exec --no-startup-id ffmpeg_record
