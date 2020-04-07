@@ -1,4 +1,6 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 usage() { echo "Usage: $0 [operation] [match_regex]"; exit 1; }
 [ -z "$2" ] && usage;
-ls | grep "$2" | sed "p;$1" | xargs -r -n2 mv -iv
+find . -name "$2" | while read -r ln; do
+    mv -v "$ln" "$(echo "$ln" | sed "$1")"
+done
