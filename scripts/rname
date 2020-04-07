@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+usage() { echo "Usage: $0 [operation] [match_regex]"; }
+[ -z "$2" ] && usage;
+ls | grep "$2" | sed "p;$1" | xargs -r -n2 mv -iv
