@@ -10,6 +10,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
 Plug 'vifm/vifm.vim'
 Plug 'arcticicestudio/nord-vim'
+"Plug 'dr-kino/cscope-maps'
 call plug#end()
 
 set go=a
