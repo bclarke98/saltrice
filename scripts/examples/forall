@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+for i in *.mkv; do
+    fn="$(basename $i | sed 's/Rick_and_Morty_//g')";
+    echo "[-] Encoding $i to $fn..."
+    ffmpencode -i "$i" -o "$fn" >/dev/null 2>&1;
+    echo "[+] Encoded $fn."
+done

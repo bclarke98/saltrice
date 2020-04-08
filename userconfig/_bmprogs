@@ -15,6 +15,7 @@ se          findmyshit
 sf          touche
 vg          valgrind
 cse         source cdtomyshit
+cip         chkip -q
 cmf         genmk
 vim         $EDITOR
 smi         sudo make -j$(nproc) install

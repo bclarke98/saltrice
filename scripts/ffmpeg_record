@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 function chkrec() {
-    pgrep -x ffmpeg && pkill -x ffmpeg && exit;
+    pgrep -x ffmpeg_record && pkill -x ffmpeg_record && exit;
 }
 chkrec 2>&1 >/dev/null
 fname="$HOME/vid/$(date +"%F_%T" | sed 's/-//g' | sed 's/://g')"

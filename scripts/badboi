@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+pgrep transmission-d 2>&1 >/dev/null && exit
+transmission-daemon --auth --username arch --password linux --port 9091 --allowed "127.0.0.1"
