@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+[ -z "$1" ] && exit 1
+fullname=$(basename -- "$1")
+extension="${fullname##*.}"
+filename="${fullname%.*}"
+
+case "$extension" in
+    tex)
+        pdflatex $fullname && biber $filename
+        ;;
+    c|cpp)
+        make -j$(nproc)
+        ;;
+esac

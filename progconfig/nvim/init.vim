@@ -8,7 +8,6 @@ Plug 'vimwiki/vimwiki'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
-Plug 'vifm/vifm.vim'
 Plug 'arcticicestudio/nord-vim'
 "Plug 'dr-kino/cscope-maps'
 call plug#end()
@@ -92,6 +91,9 @@ autocmd BufWritePre * %s/\s\+$//e
 " refresh xrdb after editing Xresources or Xdefaults
 autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
 
+" reloads aliases when editing 'bookmark' files
+autocmd BufWritePost */userconfig/* !sh $SALTRICED/userconfig/_loadbm
+
 " make sure that .tex files are seen as tex filetype
 autocmd BufRead,BufNewFile *.tex set filetype=tex
 
@@ -113,8 +115,8 @@ inoremap <M-R> :%s/\<<C-r><C-w>\>//g<Left><Left>
 " SHORTCUT: <F12>   compiles/runs current file depending on filetype
 autocmd FileType sh map <F12> :!% <Enter>
 autocmd FileType python map <F12> :!python3 %<Enter>
-autocmd FileType tex map <F12> :w<Enter>:!pdflatex %<Enter>
-autocmd FileType tex map <F5> :!pdflatex -synctex=1 -interaction=nonstopmode --shell-escape %<Enter>
+autocmd FileType tex map <F12> :w<Enter>:!compile %<Enter>
+autocmd FileType tex map <F5> :!pdflatex -synctex=1 -interaction=nonstopmode --shell-escape % && biber %<Enter>
 
 autocmd FileType c,cpp,h,hpp map <F5> :!mc && m<Enter>
 autocmd FileType c,cpp,h,hpp map <F6> :!mc && mt<Enter>

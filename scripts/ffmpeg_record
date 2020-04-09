@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 function chkrec() {
-    pgrep -x ffmpeg_record && pkill -x ffmpeg_record && exit;
+    isrec="$(ps ax | grep 'x11grab' | grep -v 'grep' | awk '{print $1}')"
+    [ ! -z "$isrec" ] && kill "$isrec" && exit
 }
 chkrec 2>&1 >/dev/null
 fname="$HOME/vid/$(date +"%F_%T" | sed 's/-//g' | sed 's/://g')"
