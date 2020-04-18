@@ -30,6 +30,7 @@ imo="$VIEWER" \
 srec="ffmpeg_record" \
 swpi="ssh osmc@10.0.1.68" \
 pdf="zathura --fork" \
+gtop="gotop" \
 rlbm="sh $SALTRICED/userconfig/_loadbm && source $HOME/.profile" \
 wmip="curl -L ifconfig.co" \
 adev="arduino > /dev/null 2>&1 & disown" \

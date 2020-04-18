@@ -8,4 +8,4 @@ fname="$HOME/vid/$(date +"%F_%T" | sed 's/-//g' | sed 's/://g')"
 [ ! -z $1 ] && fname=$1;
 offset=$(xrandr --query | awk '!/primary/ && / connected/' | awk '{print $3}' | awk -F'x' '{print $1}')
 resol=$(xrandr --query | awk '/primary/ && / connected/' | awk '{print $4}' | awk -F'+' '{print $1}')
-ffmpeg -f x11grab -video_size $resol -framerate 30 -draw_mouse 0 -i $DISPLAY.0+$offset,0 -f pulse -i default -c:v libx264 -preset ultrafast -c:a aac $fname.mp4 > $HOME/vid/output.log 2>&1 < /dev/null &
+ffmpeg -f x11grab -video_size $resol -framerate 60 -draw_mouse 0 -i $DISPLAY.0+$offset,0 -f pulse -i default -c:v libx264 -preset ultrafast -c:a aac $fname.mkv > $HOME/vid/output.log 2>&1 < /dev/null &

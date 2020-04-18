@@ -53,7 +53,7 @@ namefromid(){
 }
 
 metadata(){
-    CUR="$(playerctl metadata --format '{{ artist }} - {{ title }}' 2>&1 | grep -vi 'no player')"
+    CUR="$(playerctl metadata --format '{{ artist }} - {{ title }}' 2>&1 | grep -vi "no player")"
     [ -z "$CUR" ] && cat $CURD || echo "$CUR" | tee $CURD
 }
 

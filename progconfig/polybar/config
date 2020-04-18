@@ -378,7 +378,7 @@ interval = 1
 format-prefix = "⏺ "
 format = <label>
 exec = echo REC
-exec-if = pgrep -x ffmpeg
+exec-if = isrecording
 format-underline = #f90000
 
 ; vim:ft=dosini

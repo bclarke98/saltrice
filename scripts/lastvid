@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-fn=$(find $HOME/Videos -name "*.mp4" | sort | tail -n 1)
+fn=$(find $HOME/vid -name "*.mp4" | sort | tail -n 1)
 # fn=$(ls -lt $HOME/Videos | grep -i ".mp4" | tail -n +2 | head -n 1 | awk '{print $9}')
 [ -z $fn ] && exit;
 echo "$fn"
