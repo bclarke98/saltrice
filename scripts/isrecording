@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-[ -z "$(ps ax | grep 'x11grab' | grep -v 'grep' | awk '{print $1}')" ] && exit 1
+[ -z "$(ps ax | grep 'x11grab' | grep -v 'grep' | awk '{print $1}')" ] && exit 1 || echo "+"

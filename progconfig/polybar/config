@@ -366,7 +366,7 @@ margin-bottom = 6
 
 [module/spotify]
 type = custom/script
-interval = 10
+interval = 2
 format-prefix = " 🔊 "
 format = <label>
 exec = actl now

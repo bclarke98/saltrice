@@ -142,12 +142,15 @@ inoremap ,nil ∅
 inoremap ,sig Σ
 
 " LaTeX
+autocmd FileType tex inoremap ,up \usepackage{<++>}<++><Esc>F{ci{
 autocmd FileType tex inoremap ,pp \paragraph{}<Enter><++><Esc>kf}i
 autocmd FileType tex inoremap ,se \section{}<Enter><++><Esc>kf}i
 autocmd FileType tex inoremap ,sse \subsection{}<Enter><++><Esc>kf}i
 autocmd FileType tex inoremap ,sss \subsubsection{}<Enter><++><Esc>kf}i
 autocmd FileType tex inoremap ,fr \frac{}{<++>}<++><Esc>F}F}i
 autocmd FileType tex inoremap ,t \text{<++>}<++><Esc>F{ci{
+autocmd FileType tex inoremap ,b \textbf{<++>}<++><Esc>F{ci{
+autocmd FileType tex inoremap ,i \emph{<++>}<++><Esc>F{ci{
 autocmd FileType tex inoremap ,eq \begin{equation*}<Enter><++><Enter>\end{equation*}<Esc>2kf}i
 autocmd FileType tex inoremap ,neq \begin{equation}<Enter><++><Enter>\end{equation}<Esc>2kf}i
 autocmd FileType tex inoremap ,al \begin{align*}<Enter><++><Enter>\end{align*}<Enter><Esc>3kf}i
