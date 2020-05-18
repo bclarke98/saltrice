@@ -9,4 +9,3 @@ userconfig/_profile       .zprofile
 userconfig/_xinitrc       .xinitrc
 userconfig/_xres          .Xresources
 userconfig/_zshrc         .zshrc
-userconfig/_zshrc         .config/zsh/.zshrc

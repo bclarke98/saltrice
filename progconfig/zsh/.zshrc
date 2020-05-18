@@ -1,1 +1,0 @@
-/usr/share/saltrice/userconfig/_zshrc
