@@ -1,9 +1,12 @@
+scripts                   .scripts
 progconfig                .config
 progconfig/nvim/init.vim  .vimrc
-userconfig/_aliasrc       .config/aliasrc
+progconfig/gtk-2.0        .gtkrc-2.0
 userconfig/_bashrc        .bashrc
 userconfig/_profile       .bash_profile
 userconfig/_profile       .profile
-userconfig/_profile       .config/zsh/.zprofile
+userconfig/_profile       .zprofile
 userconfig/_xinitrc       .xinitrc
 userconfig/_xres          .Xresources
+userconfig/_zshrc         .zshrc
+userconfig/_zshrc         .config/zsh/.zshrc

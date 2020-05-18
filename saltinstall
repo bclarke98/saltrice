@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+SALTRICED="/usr/share/saltrice"
+[ -d "$XDG_CONFIG_HOME" ] && [ ! -d "$SCRIPTSD" ] && mv $XDG_CONFIG_HOME "${XDG_CONFIG_HOME}.orig" && echo "Backed up previous XDG_CONFIG_HOME to ${XDG_CONFIG_HOME}.orig"
+while IFS=, read -r ln; do
+    echo $(echo "$ln" | tr -d '\n' | awk -v sdir=$SALTRICED -v hdir=$HOME '{ print "ln -sf " sdir "/" $1 " " hdir "/" $2 }')
+done < $SALTRICED/symlinks
