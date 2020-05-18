@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 #
-export SALTRICED="/home/salty/.ez_arch/saltrice"
+export SALTRICED="/usr/share/saltrice"
 [ -f $SALTRICED/userconfig/_exports ] && source $SALTRICED/userconfig/_exports
 [ -f $SALTRICED/userconfig/_aliasrc ] && source $SALTRICED/userconfig/_aliasrc
 
