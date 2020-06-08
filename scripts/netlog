@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+logfile="/dev/shm/netcache"
+
+# inner $(paste ...) command formats rx/tx bytes as eth0+wps0
+# outer $((...)) actually performs the arithmatic and stores it in the variable
+rx_bytes="$(($(paste -d '+' /sys/class/net/*/statistics/rx_bytes)))"
+tx_bytes="$(($(paste -d '+' /sys/class/net/*/statistics/tx_bytes)))"
+
+read rx_prev tx_prev < "$logfile"
+
+printf "⬇%sKiB  ⬆%sKiB\\n" \
+    "$(($rx_bytes-$rx_prev))" "$(($tx_bytes-$tx_prev))"
+
+echo "$rx_bytes $tx_bytes" > "$logfile"

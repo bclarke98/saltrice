@@ -19,13 +19,25 @@ if [ -f $userresources ]; then
     xrdb -merge $userresources
 fi
 
-# xcompmgr &
-# sxhkd &
-# mpd &
-# unclutter &
-# xwallpaper --zoom ~/.config/wall2.png &
-# lddwm
-# exec dwm
+# wm-independent stuff
 xset s off
 numlockx &
-exec i3
+
+[ -z "$WM" ] && WM="i3"
+case "$WM" in
+    "i3")
+        exec i3
+        break
+        ;;
+    "dwm")
+        xcompmgr &
+        mpd &
+        unclutter &
+        setwall &
+        dunst &
+        nm-applet &
+        exec dwm
+        break
+        ;;
+esac
+

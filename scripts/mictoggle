@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+srcinput="$(pacmd list-sources | sed -n -e '/\*/,/muted/p')"
+rawindex="$(echo "$srcinput" | grep '*')"
+srcindex="${rawindex##* }" # grab last field
+mutestatus="${srcinput##* }"
+
+if [ "$mutestatus" = "no" ]; then
+    pacmd set-source-mute "$srcindex" true
+    notify-send 'Mic Status:' 'Muted'
+else
+    pacmd set-source-mute "$srcindex" false
+    notify-send 'Mic Status:' 'Active'
+fi
+

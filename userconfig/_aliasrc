@@ -16,6 +16,8 @@ sv="sudo -E $EDITOR" \
 se="findmyshit" \
 sf="touche" \
 vg="valgrind" \
+pj="prettyjson.py" \
+ses="sudo -Es" \
 cse="source cdtomyshit" \
 cip="chkip -q" \
 cmf="genmk" \
@@ -50,6 +52,7 @@ cfp="$EDITOR ~/.profile" \
 cfz="$EDITOR ~/.config/zsh/.zshrc" 
 # DIRECTORIES
 alias cdt="cd /usr/src/salt" \
+cdw="cd /usr/src/dwm" \
 cdr="cd $SALTRICED" \
 cds="cd $SCRIPTSD" \
 cdp="cd $SALTRICED/progconfig" \

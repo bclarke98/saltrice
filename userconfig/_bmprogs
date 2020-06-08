@@ -14,6 +14,8 @@ sv          sudo -E $EDITOR
 se          findmyshit
 sf          touche
 vg          valgrind
+pj          prettyjson.py
+ses         sudo -Es
 cse         source cdtomyshit
 cip         chkip -q
 cmf         genmk

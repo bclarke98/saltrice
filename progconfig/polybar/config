@@ -381,4 +381,10 @@ exec = echo REC
 exec-if = isrecording
 format-underline = #f90000
 
+[module/netlog]
+type = custom/script
+interval = 3
+format = <label>
+exec = netlog
+format_underline = #22ff44
 ; vim:ft=dosini

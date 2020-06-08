@@ -1,4 +1,5 @@
 t       /usr/src/salt
+w       /usr/src/dwm
 r       $SALTRICED
 s       $SCRIPTSD
 p       $SALTRICED/progconfig

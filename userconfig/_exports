@@ -1,9 +1,11 @@
 #!/bin/sh
+export WM="i3"
 export EDITOR="nvim"
 export TERMINAL="st"
 export FILE="lf"
 export BROWSER="google-chrome-stable"
 export VIEWER="sxiv"
+export READER="zathura"
 
 export SCRIPTSD="$SALTRICED/scripts"
 export CONFIGD="$HOME/.config"
