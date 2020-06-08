@@ -4,6 +4,11 @@ rawindex="$(echo "$srcinput" | grep '*')"
 srcindex="${rawindex##* }" # grab last field
 mutestatus="${srcinput##* }"
 
+if [ ! -z "$1" ]; then
+    [ "$mutestatus" = "yes" ] && echo ""
+    exit
+fi
+
 if [ "$mutestatus" = "no" ]; then
     pacmd set-source-mute "$srcindex" true
     notify-send 'Mic Status:' 'Muted'

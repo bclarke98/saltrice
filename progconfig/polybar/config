@@ -63,7 +63,7 @@ font-3 = "FuraCode Nerd Font Mono:style=medium:size12;3"
 
 modules-left = i3
 modules-center = spotify
-modules-right = recording pulseaudio filesystem cpu memory eth date powermenu
+modules-right = micstatus recording pulseaudio filesystem cpu memory eth date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -387,4 +387,11 @@ interval = 3
 format = <label>
 exec = netlog
 format_underline = #22ff44
+
+[module/micstatus]
+type = custom/script
+interval = 1
+format = <label>
+exec = mictoggle -
+
 ; vim:ft=dosini
