@@ -29,6 +29,7 @@ ssm         ssh b@mail.d3x.me
 imo         forkpic
 srec        ffmpeg_record
 swpi        ssh osmc@10.0.1.68
+smac        ssh -p 1337 brndacl@localhost
 pdf         zathura --fork
 gtop        gotop
 rlbm        sh $SALTRICED/userconfig/_loadbm && source $HOME/.profile
