@@ -97,6 +97,8 @@ bindsym $mod+m exec $term -e spt
 bindsym $mod+Shift+m exec $term -e neomutt
 bindsym $mod+Control+m exec --no-startup-id spotify
 
+bindsym $mod+grave exec --no-startup-id emojimenu
+
 # bindsym $mod+Shift+w --no-startup-id wikispawn
 
 set $ws1 "1"
