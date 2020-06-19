@@ -8,6 +8,9 @@ case "$extension" in
     tex)
         pdflatex $fullname && biber $filename
         ;;
+    md)
+        markdown $fullname > $filename.html
+        ;;
     c|cpp)
         make -j$(nproc)
         ;;

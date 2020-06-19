@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+# wtag - a ctags wrapper script with the added option of checking
+# for a .tagsignore which functions similar to git's .gitignore
+[ "$(pwd)" = "$HOME" ] && exit
+[ -f ".tagsignore" ] && args="--exclude=@.tagsignore"
+ctags "$args" "$@"

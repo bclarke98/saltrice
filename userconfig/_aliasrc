@@ -60,4 +60,5 @@ cdp="cd $SALTRICED/progconfig" \
 cdc="cd /usr/src" \
 cdf="cd $HOME/school/foundations" \
 cdu="cd $SALTRICED/userconfig" \
-cdm="cd /mnt/d3vshare" 
+cdm="cd /mnt/d3vshare" \
+cdd="cd /devel" 

@@ -7,6 +7,9 @@ rx_bytes="$(($(paste -d '+' /sys/class/net/*/statistics/rx_bytes)))"
 tx_bytes="$(($(paste -d '+' /sys/class/net/*/statistics/tx_bytes)))"
 
 read rx_prev tx_prev < "$logfile"
+# prevdata="$(cat $logfile)"
+# rx_prev="${prevdata%% *}"
+# tx_prev="${prevdata##* }"
 
 printf "⬇%sKiB  ⬆%sKiB\\n" \
     "$(($rx_bytes-$rx_prev))" "$(($tx_bytes-$tx_prev))"
