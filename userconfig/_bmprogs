@@ -1,6 +1,8 @@
 v           $EDITOR
 m           make -j$(nproc)
 p           sudo pacman
+g           gitwrap
+gap         gitwrap -a -p
 l           ls -a
 ls          ls -h --group-directories-first --color=auto
 ll          ls -l
