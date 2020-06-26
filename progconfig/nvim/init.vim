@@ -116,7 +116,7 @@ map <M-R> :%s/\<<C-r><C-w>\>//g<Left><Left>
 inoremap <M-R> :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 " SHORTCUT: <F12>   compiles/runs current file depending on filetype
-autocmd FileType sh map <F12> :!% <Enter>
+autocmd FileType sh map <F12> :!./% <Enter>
 autocmd FileType python map <F12> :!python3 %<Enter>
 autocmd FileType markdown map <F12> :w<Enter>:!compile %<Enter>
 autocmd FileType tex map <F12> :w<Enter>:!compile %<Enter>

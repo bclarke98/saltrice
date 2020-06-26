@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+# reads from stdin and outputs all but first column
+# for example, running `echo 'test TEST' | rmfirstcol` outputs 'TEST'
+cat | cut -d' ' -f2-

@@ -1,0 +1,26 @@
+#!/usr/bin/env sh
+
+while test $# -gt 0; do
+    case "$1" in
+        a|-a|--add)
+            git add . > /dev/null 2>&1
+            shift
+            ;;
+        p|-p|--push)
+            PUSH="1"
+            shift
+            ;;
+        s|-s|--status)
+            STATUS='1'
+            shift
+            ;;
+        *)
+            [ -z "$MSG" ] && MSG="$1" || MSG="$MSG $1"
+            shift
+            ;;
+    esac
+done
+[ ! -z "$STATUS" ] && git status && exit
+[ ! -z "$MSG" ] && git commit -m "$MSG" || exit
+[ ! -z "$PUSH" ] && git push
+[ -f '.postpush.hook' ] && sh .postpush.hook
