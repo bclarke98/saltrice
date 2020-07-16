@@ -128,6 +128,8 @@ autocmd FileType c,cpp,h,hpp map <F10> :!mc && ct<Enter>
 autocmd FileType c,cpp,h,hpp map <F11> :!mc && mt && ./test-*<Enter>
 autocmd FileType c,cpp,h,hpp map <F12> :!mc && m run ARGS=""<left>
 
+autocmd FileType css nmap <F7> :g#\({\n\)\@<=#.,/}/sort
+
 " TEMPLATES
 " LaTeX
 autocmd BufNewFile *.tex 0r $SNIPPETD/tex.tmpl

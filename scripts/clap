@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+[ -z "$1" ] && CLAP="off" || CLAP="$1"
+[ "$CLAP" = "on" ] && DPMS="+dpms" || DPMS="-dpms"
+[ "$CLAP" = "on" ] && XLCK="-enable" || XLCK="-disable"
+xset $DPMS
+xautolock $XLCK
+echo "Sleep when AFK: $CLAP"
