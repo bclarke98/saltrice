@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 [ -z "$1" ] && curl -sL ifconfig.co/json | jq '.' && exit;
-curl -sL ifconfig.co
+curl -sL 'https://ifconfig.co'
 

@@ -58,8 +58,9 @@ bindsym $mod+r          exec $term -e $FILE
 bindsym $mod+Shift+a    exec $term -e pulsemixer
 bindsym $mod+a          exec pavucontrol
 
-bindsym $mod+l          exec lckdwn
-bindsym $mod+Print      exec --no-startup-id ffmpeg_record
+bindsym $mod+l                          exec lckdwn
+bindsym $mod+Print                      exec --no-startup-id ffmpeg_record
+bindsym --release $mod+Shift+Print      exec --no-startup-id scrot -s
 
 # defaults
 bindsym $mod+Return exec $term

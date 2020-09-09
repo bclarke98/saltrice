@@ -3,4 +3,4 @@
 # for a .tagsignore which functions similar to git's .gitignore
 [ "$(pwd)" = "$HOME" ] && exit
 [ -f ".tagsignore" ] && args="--exclude=@.tagsignore"
-ctags "$args" "$@"
+ctags $args $@

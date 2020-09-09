@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+sudo nmap -sn 10.0.1.0/24

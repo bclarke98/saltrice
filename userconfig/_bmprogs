@@ -29,6 +29,7 @@ sus         ssh salty@10.0.1.1
 scs         ssh bclarke@mercury.cs.uml.edu
 ssm         ssh b@mail.d3x.me
 sss         ssh salty@10.0.1.10
+vss         vncviewer 10.0.1.10 & disown
 imo         forkpic
 srec        ffmpeg_record
 swpi        ssh osmc@10.0.1.68
