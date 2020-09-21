@@ -7,4 +7,5 @@ c       /usr/src
 f       $HOME/school/foundations
 u       $SALTRICED/userconfig
 m       /mnt/d3vshare
+v       /mnt/d3vault
 d       /devel

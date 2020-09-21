@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+chosen=$(grep -Eo '\w+=".*"' $SALTRICED/userconfig/_aliasrc | sort | dmenu -i -l 30 | grep -Eo '".*"' | sed 's/"//g')
+[ -z "$chosen" ] && exit
+$chosen

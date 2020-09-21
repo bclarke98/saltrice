@@ -65,4 +65,5 @@ cdc="cd /usr/src" \
 cdf="cd $HOME/school/foundations" \
 cdu="cd $SALTRICED/userconfig" \
 cdm="cd /mnt/d3vshare" \
+cdv="cd /mnt/d3vault" \
 cdd="cd /devel" 
