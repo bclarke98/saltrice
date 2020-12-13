@@ -1,0 +1,46 @@
+#!/usr/bin/env sh
+die() { echo "$@"; exit; }
+usage() {
+    echo '[DBuild]'
+    echo 'Generate sqlite3 database from schema and populate it from supplied sql files.'
+    echo
+    echo 'Usage: dbuild [-h] [-n DBNAME] [-i INFILE] [-s SCHEMAFILE]'
+    echo
+    echo 'Arguments:'
+    echo '  -h, --help          show this message and exit'
+    echo
+    echo '  -d,-n,-o DBNAME     filename for created database (Default: "database.db)"'
+    echo '  -i INPUT            file(s) to read for populating database'
+    echo '  -s SCHEMA           path to database schema file (Default: "*.schema")'
+    exit
+}
+
+while test $# -gt 0; do
+    case "$1" in
+        -n|--dbname|\
+        -d|--database|\
+        -o|--output)
+            shift
+            DBFILE="$1"
+            ;;
+        -i|--input)
+            shift
+            INFILE="$1"
+            ;;
+        -s|--schema)
+            shift
+            SCHEMA="$1"
+            ;;
+        -h|--help)
+            usage
+            ;;
+        *)
+            shift
+            ;;
+    esac
+done
+[ -z "$DBFILE" ] && DBFILE="database.db"
+[ -z "$SCHEMA" ] && SCHEMA=`ls *.schema`
+[ -f "$DBFILE" ] && die "Database [$DBFILE] already exists."
+echo ".exit" | sqlite3 -init $SCHEMA "$DBFILE"
+cat $INFILE | sqlite3 "$DBFILE"

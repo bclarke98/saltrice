@@ -2,6 +2,7 @@
 # PROGRAMS
 alias v="$EDITOR" \
 m="make -j$(nproc)" \
+o="xdg-open" \
 p="sudo pacman" \
 g="gitwrap" \
 gap="gitwrap -a -p" \
@@ -32,7 +33,7 @@ scs="ssh bclarke@mercury.cs.uml.edu" \
 ssm="ssh b@mail.d3x.me" \
 sss="ssh salty@10.0.1.10" \
 vss="vncviewer 10.0.1.10 & disown" \
-imo="forkpic" \
+imo="swallow $VIEWER" \
 srec="ffmpeg_record" \
 swpi="ssh osmc@10.0.1.68" \
 smac="ssh -p 1337 brndacl@localhost" \

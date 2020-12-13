@@ -20,6 +20,8 @@ export XDG_CONFIG_HOME="$CONFIGD"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
+export PIADIR="/usr/src/manual-connections"
+
 # export ZDOTDIR="$CONFIGD/zsh"
 
 export ARDMK_DIR="/usr/src/mk-arduino"

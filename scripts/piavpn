@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+[ ! -z "$1" ] && [ "$1" = "off" ] && [ -f /tmp/OVPN.pid ] && sudo kill $(cat /tmp/OVPN.pid) && sudo rm /tmp/OVPN.pid
+U="p4420967"
+P="$(pass piapass)"
+
+cd $PIADIR
+sudo PIA_USER="$U" PIA_PASS="$P" PIA_AUTOCONNECT="openvpn_udp_strong" ./get_region_and_token.sh
