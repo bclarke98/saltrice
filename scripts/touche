@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-FTYPES="c,h,cpp,sh,py"
+FTYPES="c,h,cpp,sh,py,tex"
 
 function helpmsg(){
     echo "Format: $0 -f [filetype]"
@@ -31,6 +31,10 @@ function mk_file(){
             py)
                 OUTPUT="#!/usr/bin/env python3\n\n\ndef main():\n    pass\n\nif __name__ == '__main__':\n    main()\n\n"
                 CHMOD="1"
+                break
+                ;;
+            tex)
+                OFILE="$SNIPPETD/tex.tmpl"
                 break
                 ;;
             *)
@@ -64,8 +68,8 @@ done
 
 mk_file $FILETYPE
 if [ ! -z "$TARG" ]; then
-    echo -e "$OUTPUT" > $TARG
+    [ ! -z "$OFILE" ] && cat "$OFILE" > $TARG || echo -e "$OUTPUT" > $TARG
     [ ! -z "$CHMOD" ] && chmod +x $TARG
 else
-    echo -e "$OUTPUT"
+    [ ! -z "$OFILE" ] && cat "$OFILE" || echo -e "$OUTPUT"
 fi
