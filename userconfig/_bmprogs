@@ -42,3 +42,4 @@ wmip        curl -L ifconfig.co
 adev        arduino > /dev/null 2>&1 & disown
 grep        grep --color=auto
 rb2win      sudo /usr/share/saltrice/scripts/reboot2win
+doc2pdf     abiword --to=pdf
