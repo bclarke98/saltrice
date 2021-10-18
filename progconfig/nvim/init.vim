@@ -45,6 +45,18 @@ set t_vb=
 set splitbelow splitright
 
 let mapleader=","
+if !has('nvim')
+    set viminfo=%,<800,'10,/50,:100,h,f0,n~/.cache/.viminfo
+    "           | |    |   |   |    | |  + viminfo file path
+    "           | |    |   |   |    | + file marks 0-9,A-Z 0=NOT stored
+    "           | |    |   |   |    + disable 'hlsearch' loading viminfo
+    "           | |    |   |   + command-line history saved
+    "           | |    |   + search history saved
+    "           | |    + files marks saved
+    "           | + lines saved each register (old name for <, vi6.2)
+    "           + save/restore buffer list
+endif
+
 
 " open where we left off
 if has("autocmd")
@@ -116,6 +128,9 @@ inoremap <M-r> :s/\<<C-r><C-w>\>//g<Left><Left>
 map <M-R> :%s/\<<C-r><C-w>\>//g<Left><Left>
 inoremap <M-R> :%s/\<<C-r><C-w>\>//g<Left><Left>
 
+" SHORTCUT: <F2>    toggle spellcheck
+map <F2> :set spell!<CR>
+
 " SHORTCUT: <F12>   compiles/runs current file depending on filetype
 autocmd FileType sh map <F12> :!./% <Enter>
 autocmd FileType python map <F12> :!python3 %<Enter>
@@ -158,6 +173,7 @@ autocmd FileType tex inoremap ,fr \frac{}{<++>}<++><Esc>F}F}i
 autocmd FileType tex inoremap ,t \text{<++>}<++><Esc>F{ci{
 autocmd FileType tex inoremap ,b \textbf{<++>}<++><Esc>F{ci{
 autocmd FileType tex inoremap ,i \emph{<++>}<++><Esc>F{ci{
+autocmd FileType tex inoremap ,v \begin{verbatim}<Enter><++><Enter>\end{verbatim}<Esc>2kf}i
 autocmd FileType tex inoremap ,eq \begin{equation*}<Enter><++><Enter>\end{equation*}<Esc>2kf}i
 autocmd FileType tex inoremap ,neq \begin{equation}<Enter><++><Enter>\end{equation}<Esc>2kf}i
 autocmd FileType tex inoremap ,al \begin{align*}<Enter><++><Enter>\end{align*}<Enter><Esc>3kf}i

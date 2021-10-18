@@ -6,6 +6,7 @@ export FILE="lf"
 export BROWSER="google-chrome-stable"
 export VIEWER="sxiv"
 export READER="zathura"
+export PLAYER="mpv"
 
 export SCRIPTSD="$SALTRICED/scripts"
 export CONFIGD="$HOME/.config"

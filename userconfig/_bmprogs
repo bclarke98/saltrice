@@ -30,6 +30,7 @@ sus         ssh salty@10.0.1.1
 scs         ssh bclarke@mercury.cs.uml.edu
 ssm         ssh b@mail.d3x.me
 sss         ssh salty@10.0.1.10
+ssa         ssh -i /devel/ec2/ec2_deb.pem admin@54.85.108.207
 vss         vncviewer 10.0.1.10 & disown
 imo         swallow $VIEWER
 srec        ffmpeg_record

@@ -83,3 +83,6 @@ source $PLUGIND/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 # source /usr/lib/python3.8/site-packages/powerline/bindings/zsh/powerline.zsh 2>/dev/null
 # source $PLUGIND/zsh-gitfast/gitfast.plugin.zsh
 # source $PLUGIND/zsh-agnoster-theme/agnoster.zsh-theme
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
